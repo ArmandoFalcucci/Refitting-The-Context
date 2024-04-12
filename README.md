@@ -3,7 +3,7 @@
 
 ### Compendium DOI:
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10965414.svg)](https://doi.org/10.5281/zenodo.10965414)
+[![DOI](https://zenodo.org/badge/785694313.svg)](https://zenodo.org/doi/10.5281/zenodo.10965413)
 
 The content available at the above provided URL will reproduce the results as documented in the publication. Instead, the files hosted at <https://github.com/ArmandoFalcucci/Refitting-The-Context> represent the developmental versions and might have undergone modifications since the paper's publication.
 
