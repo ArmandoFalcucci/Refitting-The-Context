@@ -1,0 +1,246 @@
+---
+title: "Tables for the paper 'Refitting the context: A reconsideration of the Aurignacian sequence at Fumane Cave through spatial taphonomy and lithic technology'"
+date: ''
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../output"
+    )
+  })
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+## Data preparation
+See the .Rmd file.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+library(readxl)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(janitor)
+library(rstatix)
+library(MetBrewer)
+library(ggpubr)
+library(ggstatsplot)
+```
+
+```{r include=FALSE}
+## Selecting the blanks belonging to the areas chosen for the technological studies
+
+# A2int ####
+dataset_A2int <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+  filter(unit == "A2") %>%
+  filter(square %in% c("95", "100", "105", "110","115", "120", "125")) %>%
+  rename(SU = "unit")
+
+dataset_A2int$SU <- c("A2int")
+
+
+# A2ext ####
+dataset_A2ext <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+  filter(unit == "A2") %>%
+  filter(square %in% c("55","56", "65", "66")) %>%
+  rename(SU = "unit")
+
+dataset_A2ext$SU <- c("A2ext")
+
+
+# A1ext ####
+dataset_A1ext <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+  filter(unit == "A1") %>%
+  filter(square %in% c("55","56", "65", "66")) %>%
+  rename(SU = "unit")
+
+dataset_A1ext$SU <- c("A1ext")
+
+# A1 est ####
+dataset_A1east <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+  filter(unit == "A1") %>%
+  filter(square %in% c("62","63", "72", "73")) %>%
+  rename(SU = "unit")
+
+dataset_A1east$SU <- c("A1east")
+
+
+# D3b alpha ####
+dataset_D3balpha <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+  rename(SU = "unit") %>%
+  filter(SU == "D3b.alpha")
+
+# Merging ####
+dataset.blank <- rbind(dataset_A2ext, dataset_A2int, dataset_A1ext,dataset_A1east, dataset_D3balpha)
+
+dataset.blank <- dataset.blank %>%
+  mutate(SU = fct_relevel(SU, "A2int", "A2ext", "A1ext", "A1east", "D3b.alpha"))
+```
+
+```{r include=FALSE}
+## Selecting the cores belonging to the areas chosen for the technological studies
+
+# A2int ####
+dataset_core_A2int <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+  filter(unit == "A2") %>%
+  filter(square %in% c("95", "100", "105", "110","115", "120", "125")) %>%
+  rename(SU = "unit")
+
+dataset_core_A2int$SU <- c("A2int")
+
+
+# A2ext ####
+dataset_core_A2ext <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+  filter(unit == "A2") %>%
+  filter(square %in% c("55","56", "65", "66")) %>%
+  rename(SU = "unit")
+
+dataset_core_A2ext$SU <- c("A2ext")
+
+
+# A1ext ####
+dataset_core_A1ext <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+  filter(unit == "A1") %>%
+  filter(square %in% c("55","56", "65", "66")) %>%
+  rename(SU = "unit")
+
+dataset_core_A1ext$SU <- c("A1ext")
+
+
+# A1 est ####
+dataset_core_A1east <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+  filter(unit == "A1") %>%
+  filter(square %in% c("62","63", "72", "73")) %>%
+  rename(SU = "unit")
+
+dataset_core_A1east$SU <- c("A1east")
+
+
+# D3b alpha ####
+dataset_core_D3balpha <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+  rename(SU = "unit") %>%
+  filter(SU == "D3b.alpha")
+
+
+# Merging ####
+dataset.core <- rbind(dataset_core_A2ext, dataset_core_A2int, dataset_core_A1ext,dataset_core_A1east, dataset_core_D3balpha)
+
+dataset.core <- dataset.core %>%
+  mutate(SU = fct_relevel(SU, "A2int", "A2ext", "A1ext", "A1east", "D3b.alpha"))
+```
+
+```{r include=FALSE}
+# Creating a dataset that includes all blanks and cores, as well as those fragments and flakes that were only counted and divided according to the technological category in Falcucci et al. (2017) and Falcucci et al. (2020)
+
+dataset.fragments.flakes <- read_csv("../data/RF_Dataset_Fragments_Flakes.csv") %>%
+  select(SU, class, blank, technology, preservation, cortex.y.n)
+
+dataset.blank.reduced <- dataset.blank %>%
+  select(SU, class, blank, technology, preservation, cortex.y.n)
+
+dataset.core.reduced <- dataset.core %>%
+  filter(class != "Core-Tool") %>%
+  select(SU, class) %>%
+  mutate(blank = NA, technology = NA, preservation = NA, cortex.y.n = NA)
+
+dataset.complete.reduced <- rbind(dataset.fragments.flakes, dataset.blank.reduced, dataset.core.reduced)
+
+dataset.complete.reduced <- dataset.complete.reduced %>%
+  mutate(SU = fct_relevel(SU, "A2int", "A2ext", "A1ext", "A1east", "D3b.alpha"))
+
+```
+
+```{r include=FALSE}
+comparison <- list(c("A2int", "A2ext"), c("A2int", "A1ext"), c("A2int", "A1east"), c("A2int", "D3b.alpha"), c("A2ext", "A1ext"), c("A2ext", "A1east"), c("A2ext", "D3b.alpha"), c("A1ext", "A1east"), c("A1ext", "D3b.alpha"), c("A1east", "D3b.alpha"))
+
+comparison_no.alpha <- list(c("A2int", "A2ext"), c("A2int", "A1ext"), c("A2int", "A1east"), c("A2ext", "A1ext"), c("A2ext", "A1east"), c("A1ext", "A1east"))
+
+comparison_A2int.ext <- list(c("A2ext", "A2int"))
+```
+
+
+## Tables
+
+### Table 5
+```{r, echo=FALSE, warning=FALSE}
+dataset.complete.reduced %>%
+  filter(class != "Chip") %>%
+  mutate(class = recode(class, `Core-Tool` = "Core")) %>%
+  tabyl(class, SU) %>%
+  adorn_totals("row") %>%
+  adorn_percentages("col") %>%
+  adorn_pct_formatting(digits = 1) %>%
+  adorn_ns(position = "front") %>%
+  adorn_title(placement = "top") %>%
+  kbl(align = "lcc") %>%
+  kable_classic_2(lightable_options = "striped", full_width = F)
+```
+  **Table 5.**
+
+
+### Table 6
+```{r, echo=FALSE, warning=FALSE}
+dataset.blank %>%
+  filter(class == "Tool" | class == "Core-Tool") %>%
+  mutate(typology = recode(typology, `Retouched blade` = "Blade retouched", `Blade with lateral retouch` ="Blade retouched", `Scaled piece` = "Splintered piece", `Undetermined retouched piece` = "Undet. retouched tool", Endscraper = "Endscraper plain", Burin = "Burin simple")) %>%
+  tabyl(typology, SU) %>%
+  adorn_totals("row") %>%
+  adorn_percentages("col") %>%
+  adorn_pct_formatting(digits = 1) %>%
+  adorn_ns(position = "front") %>%
+  adorn_title(placement = "top") %>%
+  kbl(align = "lcc") %>%
+  kable_classic_2(lightable_options = "striped", full_width = F)
+```
+ **Table 6.**
+
+
+### Table 7
+```{r, echo= FALSE, warning=FALSE}
+dataset.complete.reduced %>%
+  filter(class == "Blank") %>%
+  tabyl(cortex.y.n, SU) %>%
+  adorn_totals("row") %>%
+  adorn_percentages("col") %>%
+  adorn_pct_formatting(digits = 1) %>%
+  adorn_ns(position = "front") %>%
+  adorn_title(placement = "top") %>%
+  kbl(align = "lcc") %>%
+  kable_classic_2(lightable_options = "striped", full_width = F)
+```
+ **Table 7.1.**
+
+```{r, echo= FALSE, warning=FALSE}
+dataset.complete.reduced %>%
+  filter(class == "Tool") %>%
+  tabyl(cortex.y.n, SU) %>%
+  adorn_totals("row") %>%
+  adorn_percentages("col") %>%
+  adorn_pct_formatting(digits = 1) %>%
+  adorn_ns(position = "front") %>%
+  adorn_title(placement = "top") %>%
+  kbl(align = "lcc") %>%
+  kable_classic_2(lightable_options = "striped", full_width = F)
+```
+**Table 7.2.**
+
+
+### Table 8
+```{r, echo=FALSE, warning=FALSE}
+dataset.core %>%
+    mutate(classification.1 = fct_relevel(classification.1, "Initial", "Carinated", "Narrow-sided", "Semicircumferential", "Wide-faced", "Multi-platform", "Flake", "Tested", "Shatter")) %>%
+  mutate(classification.1 = recode(classification.1, Flake = "Flake core")) %>%
+  tabyl(classification.1, SU) %>%
+  adorn_totals("row") %>%
+  adorn_percentages("col") %>%
+  adorn_pct_formatting(digits = 1) %>%
+  adorn_ns(position = "front") %>%
+  adorn_title(placement = "top") %>%
+  kbl(align = "lcccr") %>%
+  kable_classic_2(lightable_options = "striped", full_width = F)
+```
+  *Table 8.*
