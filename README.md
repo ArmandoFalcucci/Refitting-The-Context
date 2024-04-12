@@ -27,7 +27,7 @@ Pleistocene; Europe; Spatial Analysis; Taphonomy; Lithic Technology; Upper Paleo
 
 ### Overview of contents and how to reproduce:
 
-Within this repository, various folders house data (`data`), code (`script`), and output files (`output`) pertinent to the paper. The data folder encompasses the blank and core datasets from the Aurignacian of Fumane Cave and the dataset of the blade fragment connection study. To replicate the results, download the entire repository and employ `Refitting-the-Context.Rproj` and open the folder `script`. For ensuring reproducibility, the `renv` package (v. 1.0.3) was utilized, following the procedures detailed in its vignette. All analyses and visualizations in the paper were conducted using R 4.3.1 on Microsoft Windows 10.0.19045 (64-bit). As the necessary packages are available in the `renv` folder, they are not explicitly listed here.
+Within this repository, various folders house data (`data`), code (`script`), and output files (`output`) pertinent to the paper. The data folder encompasses the blank and core datasets from the Aurignacian of Fumane Cave and the dataset of the blade fragment connection study. To replicate the results, download the entire repository and employ `Refitting-The-Context.Rproj` and open the folder `script`. For ensuring reproducibility, the `renv` package (v. 1.0.3) was utilized, following the procedures detailed in its vignette. All analyses and visualizations in the paper were conducted using R 4.3.1 on Microsoft Windows 10.0.19045 (64-bit). As the necessary packages are available in the `renv` folder, they are not explicitly listed here.
 
 ### Licenses:
 
