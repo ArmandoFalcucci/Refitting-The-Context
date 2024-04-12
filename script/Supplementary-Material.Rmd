@@ -1,6 +1,6 @@
 ---
 title: Supplementary Material (SM)
-subtitle: "Refitting the context: A reconsideration of the Aurignacian sequence at Fumane Cave through spatial taphonomy and lithic technology"
+subtitle: "Refitting the context: A reconsideration of the Aurignacian stratigraphic sequence at Fumane Cave through spatial taphonomy and lithic technology"
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
