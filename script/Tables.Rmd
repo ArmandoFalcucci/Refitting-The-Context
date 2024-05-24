@@ -1,5 +1,5 @@
 ---
-title: "Tables for the paper 'Refitting the context: A reconsideration of the Aurignacian sequence at Fumane Cave through spatial taphonomy and lithic technology'"
+title: "Tables for the paper 'Refitting the Context: Revisiting the Aurignacian sequence at Fumane Cave through blade fragment connections, spatial taphonomy, and lithic technology'"
 date: ''
 knit: (function(input, ...) {
     rmarkdown::render(

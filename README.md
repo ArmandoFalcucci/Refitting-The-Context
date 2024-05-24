@@ -23,7 +23,7 @@ High-resolution chrono-stratigraphic frameworks are crucial for unraveling the b
 
 ### Keywords:
 
-Pleistocene; Europe; Spatial Analysis; Taphonomy; Lithic Technology; Upper Paleolithic; Assemblage Integrity.
+Protoaurignacian; Early Aurignacian; Assemblage Integrity; Spatial analysis; Early *Homo sapiens*; Italy
 
 ### Overview of contents and how to reproduce:
 
