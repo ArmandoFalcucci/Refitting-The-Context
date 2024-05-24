@@ -1,5 +1,5 @@
 
-## Research compendium for 'Refitting the context: A reconsideration of the Aurignacian stratigraphic sequence at Fumane Cave through spatial taphonomy and lithic technology' 
+## Research compendium for 'Refitting the Context: Revisiting the Aurignacian sequence at Fumane Cave through blade fragment connections, spatial taphonomy, and lithic technology' 
 
 ### Compendium DOI:
 
@@ -15,7 +15,7 @@ The content available at the above provided URL will reproduce the results as do
 
 ### Submitted paper:
 
-Armando Falcucci, Domenico Giusti, Filippo Zangrossi, Matteo De Lorenzi, Letizia Ceregatti, Marco Peresani. Refitting the context: A reconsideration of the Aurignacian stratigraphic sequence at Fumane Cave through spatial taphonomy and lithic technology. _in preparation_ (2024).
+Armando Falcucci, Domenico Giusti, Filippo Zangrossi, Matteo De Lorenzi, Letizia Ceregatti, Marco Peresani. Refitting the Context: Revisiting the Aurignacian sequence at Fumane Cave through blade fragment connections, spatial taphonomy, and lithic technology. _in preparation_ (2024).
 
 ### Abstract:
 
