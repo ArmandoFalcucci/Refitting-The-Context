@@ -1,4 +1,4 @@
-## Research compendium for 'Refitting the Context: A Reconsideration of Cultural Change among Early Homo sapiens at Fumane Cave through Blade Break Connections, Spatial Taphonomy, and Lithic Technology' 
+## Research compendium for 'Refitting the Context: A Reconsideration of Cultural Change among Early *Homo sapiens* at Fumane Cave through Blade Break Connections, Spatial Taphonomy, and Lithic Technology' 
 
 ### Compendium DOI:
 
