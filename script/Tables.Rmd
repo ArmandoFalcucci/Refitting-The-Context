@@ -1,5 +1,5 @@
 ---
-title: "Tables for the paper 'Refitting the Context: Revisiting the Aurignacian sequence at Fumane Cave through blade fragment connections, spatial taphonomy, and lithic technology'"
+title: "Refitting the context: A reconsideration of cultural change among early Homo sapiens at Fumane Cave through blade break connections, spatial taphonomy, and lithic technology'"
 date: ''
 knit: (function(input, ...) {
     rmarkdown::render(
@@ -12,6 +12,8 @@ output:
     toc: true
     toc_float: true
 ---
+
+<br>
 
 ## Data preparation
 See the .Rmd file.
@@ -35,7 +37,7 @@ library(ggstatsplot)
 ## Selecting the blanks belonging to the areas chosen for the technological studies
 
 # A2int ####
-dataset_A2int <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A2int <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A2") %>%
   filter(square %in% c("95", "100", "105", "110","115", "120", "125")) %>%
   rename(SU = "unit")
@@ -44,7 +46,7 @@ dataset_A2int$SU <- c("A2int")
 
 
 # A2ext ####
-dataset_A2ext <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A2ext <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A2") %>%
   filter(square %in% c("55","56", "65", "66")) %>%
   rename(SU = "unit")
@@ -53,15 +55,15 @@ dataset_A2ext$SU <- c("A2ext")
 
 
 # A1ext ####
-dataset_A1ext <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A1ext <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A1") %>%
   filter(square %in% c("55","56", "65", "66")) %>%
   rename(SU = "unit")
 
 dataset_A1ext$SU <- c("A1ext")
 
-# A1 est ####
-dataset_A1east <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+# A1 east ####
+dataset_A1east <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A1") %>%
   filter(square %in% c("62","63", "72", "73")) %>%
   rename(SU = "unit")
@@ -70,7 +72,7 @@ dataset_A1east$SU <- c("A1east")
 
 
 # D3b alpha ####
-dataset_D3balpha <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_D3balpha <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   rename(SU = "unit") %>%
   filter(SU == "D3b.alpha")
 
@@ -85,7 +87,7 @@ dataset.blank <- dataset.blank %>%
 ## Selecting the cores belonging to the areas chosen for the technological studies
 
 # A2int ####
-dataset_core_A2int <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+dataset_core_A2int <- read.csv("../data/RF_Dataset_Core.csv") %>%
   filter(unit == "A2") %>%
   filter(square %in% c("95", "100", "105", "110","115", "120", "125")) %>%
   rename(SU = "unit")
@@ -94,7 +96,7 @@ dataset_core_A2int$SU <- c("A2int")
 
 
 # A2ext ####
-dataset_core_A2ext <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+dataset_core_A2ext <- read.csv("../data/RF_Dataset_Core.csv") %>%
   filter(unit == "A2") %>%
   filter(square %in% c("55","56", "65", "66")) %>%
   rename(SU = "unit")
@@ -103,7 +105,7 @@ dataset_core_A2ext$SU <- c("A2ext")
 
 
 # A1ext ####
-dataset_core_A1ext <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+dataset_core_A1ext <- read.csv("../data/RF_Dataset_Core.csv") %>%
   filter(unit == "A1") %>%
   filter(square %in% c("55","56", "65", "66")) %>%
   rename(SU = "unit")
@@ -111,8 +113,8 @@ dataset_core_A1ext <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
 dataset_core_A1ext$SU <- c("A1ext")
 
 
-# A1 est ####
-dataset_core_A1east <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+# A1 east ####
+dataset_core_A1east <- read.csv("../data/RF_Dataset_Core.csv") %>%
   filter(unit == "A1") %>%
   filter(square %in% c("62","63", "72", "73")) %>%
   rename(SU = "unit")
@@ -121,7 +123,7 @@ dataset_core_A1east$SU <- c("A1east")
 
 
 # D3b alpha ####
-dataset_core_D3balpha <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+dataset_core_D3balpha <- read.csv("../data/RF_Dataset_Core.csv") %>%
   rename(SU = "unit") %>%
   filter(SU == "D3b.alpha")
 
@@ -162,8 +164,11 @@ comparison_no.alpha <- list(c("A2int", "A2ext"), c("A2int", "A1ext"), c("A2int",
 comparison_A2int.ext <- list(c("A2ext", "A2int"))
 ```
 
+<br>
 
 ## Tables
+
+<br>
 
 ### Table 5
 ```{r, echo=FALSE, warning=FALSE}
@@ -179,8 +184,8 @@ dataset.complete.reduced %>%
   kbl(align = "lcc") %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
-  **Table 5.**
 
+<br>
 
 ### Table 6
 ```{r, echo=FALSE, warning=FALSE}
@@ -196,8 +201,8 @@ dataset.blank %>%
   kbl(align = "lcc") %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
- **Table 6.**
 
+<br>
 
 ### Table 7
 ```{r, echo= FALSE, warning=FALSE}
@@ -212,7 +217,7 @@ dataset.complete.reduced %>%
   kbl(align = "lcc") %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
- **Table 7.1.**
+
 
 ```{r, echo= FALSE, warning=FALSE}
 dataset.complete.reduced %>%
@@ -226,8 +231,8 @@ dataset.complete.reduced %>%
   kbl(align = "lcc") %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
-**Table 7.2.**
 
+<br>
 
 ### Table 8
 ```{r, echo=FALSE, warning=FALSE}
@@ -243,4 +248,3 @@ dataset.core %>%
   kbl(align = "lcccr") %>%
   kable_classic_2(lightable_options = "striped", full_width = F)
 ```
-  *Table 8.*

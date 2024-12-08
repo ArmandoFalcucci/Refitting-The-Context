@@ -1,6 +1,6 @@
 ---
 title: Supplementary Material (SM)
-subtitle: "Refitting the Context: Revisiting the Aurignacian sequence at Fumane Cave through blade fragment connections, spatial taphonomy, and lithic technology"
+subtitle: "Refitting the context: A reconsideration of cultural change among early Homo sapiens at Fumane Cave through blade break connections, spatial taphonomy, and lithic technology"
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
@@ -9,9 +9,8 @@ knit: (function(input, ...) {
   })
 date: ''
 output: 
-  html_document:
+  word_document:
     toc: true
-    toc_float: true
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -26,13 +25,14 @@ library(rstatix)
 library(MetBrewer)
 library(ggpubr)
 library(ggstatsplot)
+library(flextable)
 ```
 
 ```{r, include=FALSE, warning=FALSE}
 ## Selecting the blanks belonging to the areas chosen for the technological studies
 
 # A2int ####
-dataset_A2int <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A2int <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A2") %>%
   filter(square %in% c("95", "100", "105", "110","115", "120", "125")) %>%
   rename(SU = "unit")
@@ -41,7 +41,7 @@ dataset_A2int$SU <- c("A2int")
 
 
 # A2ext ####
-dataset_A2ext <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A2ext <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A2") %>%
   filter(square %in% c("55","56", "65", "66")) %>%
   rename(SU = "unit")
@@ -50,7 +50,7 @@ dataset_A2ext$SU <- c("A2ext")
 
 
 # A1ext ####
-dataset_A1ext <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A1ext <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A1") %>%
   filter(square %in% c("55","56", "65", "66")) %>%
   rename(SU = "unit")
@@ -58,7 +58,7 @@ dataset_A1ext <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
 dataset_A1ext$SU <- c("A1ext")
 
 # A1 east ####
-dataset_A1east <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A1east <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A1") %>%
   filter(square %in% c("62","63", "72", "73")) %>%
   rename(SU = "unit")
@@ -67,7 +67,7 @@ dataset_A1east$SU <- c("A1east")
 
 
 # D3b alpha ####
-dataset_D3balpha <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_D3balpha <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   rename(SU = "unit") %>%
   filter(SU == "D3b.alpha")
 
@@ -82,7 +82,7 @@ dataset.blank <- dataset.blank %>%
 ## Selecting the cores belonging to the areas chosen for the technological studies
 
 # A2int ####
-dataset_core_A2int <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+dataset_core_A2int <- read.csv("../data/RF_Dataset_Core.csv") %>%
   filter(unit == "A2") %>%
   filter(square %in% c("95", "100", "105", "110","115", "120", "125")) %>%
   rename(SU = "unit")
@@ -91,7 +91,7 @@ dataset_core_A2int$SU <- c("A2int")
 
 
 # A2ext ####
-dataset_core_A2ext <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+dataset_core_A2ext <- read.csv("../data/RF_Dataset_Core.csv") %>%
   filter(unit == "A2") %>%
   filter(square %in% c("55","56", "65", "66")) %>%
   rename(SU = "unit")
@@ -100,7 +100,7 @@ dataset_core_A2ext$SU <- c("A2ext")
 
 
 # A1ext ####
-dataset_core_A1ext <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+dataset_core_A1ext <- read.csv("../data/RF_Dataset_Core.csv") %>%
   filter(unit == "A1") %>%
   filter(square %in% c("55","56", "65", "66")) %>%
   rename(SU = "unit")
@@ -109,7 +109,7 @@ dataset_core_A1ext$SU <- c("A1ext")
 
 
 # A1 east ####
-dataset_core_A1east <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+dataset_core_A1east <- read.csv("../data/RF_Dataset_Core.csv") %>%
   filter(unit == "A1") %>%
   filter(square %in% c("62","63", "72", "73")) %>%
   rename(SU = "unit")
@@ -118,7 +118,7 @@ dataset_core_A1east$SU <- c("A1east")
 
 
 # D3b alpha ####
-dataset_core_D3balpha <- read_excel("../data/RF_Dataset_Cores.xlsx") %>%
+dataset_core_D3balpha <- read.csv("../data/RF_Dataset_Core.csv") %>%
   rename(SU = "unit") %>%
   filter(SU == "D3b.alpha")
 
@@ -170,74 +170,85 @@ dataset.core <- dataset.core %>%
 <br>
 
 ## SM S1: The formation of the cave and its stratigraphic sequence
-Fumane Cave is situated on a rock cliff at approximately 350 meters above sea level in the western Monti Lessini Plateau within the Venetian pre-Alps of northeastern Italy (see Fig. 1a). The initial scientific exploration of the site occurred in 1964. Thereafter, in 1982, the Natural History Museum of Verona conducted excavations, primarily focusing on the lowermost deposits exposed during road construction. Following a period of inactivity, during which some unauthorized excavations damaged the southeastern deposit, systematic fieldwork commenced in 1988 under the coordination of the University of Ferrara. Fieldwork continues to this day under the direction of one of us (MP).
-Fumane is part of a karst complex that formed during the Neogene era, excavating the Ooliti di San Virgilio — a series of thick carbonate sandstone banks with distinct cross-lamination, cyclically interspersed with micritic limestones. The karst complex comprises a wide opening partially filled with residual dolomite sands. It features a primary cavity (tunnel B) and two associated tunnels (A and C) that open in its upper portion (see Fig. 1b). Tunnel C and a section of tunnel B are excavated within the micritic banks, while tunnel A and the western atrial portion of tunnel B extend into the carbonate sandstones. These two lithological units have experienced extensive dolomitization and are separated by a distinct discontinuity that traverses tunnel B, significantly influencing the composition of the SUs. The ceiling of the carbonate sandstone unit has proven to be rather unstable due to multiple fractures running parallel to the overlying rock wall, resulting in numerous landslide events at the cave entrance. These events, coupled with sedimentary aggradation, eventually obstructed access to the cave approximately after the H3. Therefore, the current cave morphology and the overall composition of the stratigraphic sequence are the result of two major events: the collapse of thick calcarenites and the gradual dismantling of micritic banks at the cave entrance, mainly caused by freezing and thawing during the Late Pleistocene (Broglio & Dalmeri, 2005; Peresani, 2022).
-The succession of natural and archaeological SUs at Fumane is notably complex also due to lateral variations in sediment composition both between the external and internal areas of the cave and between its western and eastern sides. This divergence is driven by the abrupt transition between the calcarenite and micrite banks, which runs transversely to the cave’s primary longitudinal axis. Surface dissolution of carbonate sandstones has resulted in sand accumulation in the western part of the cave, while the progressive fragmentation of micrite banks has led to the deposition of clast-supported angular rubble with variable content of sandy-loamy matrix in the central and eastern parts. It is important to note that this sharp distinction characterizes both Middle and Upper Paleolithic SUs, along a sequence reflecting climatic instability with varying rates of degradation of the cave’s walls.
-During the initial years of systematic archaeological excavations, researchers focused on the upper deposit of the external sector, revealing evidence of the most recent landslide event and a few Upper Paleolithic artifacts. Subsequently, as large boulders were removed, excavation efforts shifted toward the cave’s internal sector. These interventions led to the identification of three primary areas within the cave. The present external area is characterized by boulder accumulation and the sedimentation of silicate silt containing quartz and mica grains. The prevalence of this fraction increases from the cave entrance toward the outermost area due to the deposition of loess-like sediments. In this area, SUs are somewhat less defined, with limited thickness, and anthropogenic evidence becomes scarcer compared to the rest of the deposit. The other two areas are the cave entrance and the cave mouth. This innermost area, which is characterized by varying temperature and humidity conditions at a micro-scale, has been affected by post-depositional deformations and soil frost action, particularly evident at the field scale in the eastern zone of the cave. 
-The high-resolution stratigraphic sequence of Fumane (see Fig. 1c,d) encompasses several Middle and Upper Paleolithic SUs spanning from the MIS4 and concluding during the H3 with the definitive collapse of the cave ceiling (the archaeological data are summarized in Peresani, 2022, and the references therein). The most anthropogenic sedimentary body is referred to as macro-unit A, characterized by numerous thin parallel levels and horizontally bedded lenses. This macro-unit contains evidence of Mousterian (A11–A4), Uluzzian (A3), and Protoaurignacian (A2–A1) living floors (e.g., Delpiano & Peresani, 2017; Falcucci & Peresani, 2019; Falcucci et al., 2020; Peresani, 2012; Peresani et al., 2016). Aurignacian assemblages are still found in the lower SUs of macro-unit D, which marks a change in lithological composition and contains evidence of several landslide events. The protracted and challenging climatic conditions recorded within macro-unit D, as confirmed by a study of the small mammal assemblages (López-García et al., 2015), played a crucial role in causing the systematic disruption and eventual collapse of the cave’s ceiling, ultimately sealing its entrance. These landslide events alternated with phases of aeolian and colluvial sedimentation, accompanied by processes of pedogenic phases. Evidence of human occupation becomes sporadic in the middle portion of this macro-unit, assigned to the early Gravettian (D1d; Falcucci & Peresani, 2019), and nearly absent in the uppermost SUs. The chronological range of the Aurignacian and Gravettian SUs (Falcucci & Peresani, 2019; Higham et al., 2009; Higham, 2011; Marín-Arroyo et al., 2023)   places human occupations between the GS-10 (Rasmussen et al., 2014) and the Heinrich Event 3 (Hemming, 2004).
+Fumane Cave is located on a rock cliff approximately 350 meters above sea level in the western Monti Lessini Plateau within the Venetian pre-Alps of northeastern Italy (see **Fig. 1a**). The initial scientific exploration of the site took place in 1964, followed by excavations conducted by the Natural History Museum of Verona in 1982, focusing on the lowermost deposits exposed during road construction. After a period of inactivity, during which unauthorized excavations caused damage to the southeastern deposits, systematic fieldwork resumed in 1988 under the coordination of the University of Ferrara. Excavations continue today under the direction of one of us (MP).
+
+Fumane is part of a karst complex formed during the Neogene, carved into the Ooliti di San Virgilio—a sequence of thick carbonate sandstone layers with distinctive cross-lamination, cyclically interspersed with micritic limestones. The karst complex consists of a wide opening partially filled with residual dolomite sands, featuring a main cavity (Tunnel B) and two associated tunnels (A and C) that open at the upper section (see **Fig. 1b**). Tunnel C and part of Tunnel B are excavated within the micritic layers, while Tunnel A and the western portion of Tunnel B extend into the carbonate sandstones. These lithological units, extensively dolomitized, are separated by a distinct discontinuity that runs through Tunnel B, significantly influencing the composition of the Stratigraphic Units (SUs). The ceiling of the carbonate sandstone unit has been unstable due to fractures parallel to the overlying rock wall, leading to landslides at the cave entrance. These collapses and sediment buildup eventually prevented access to the cave after the Heinrich Event 3. Thus, the cave’s current morphology and stratigraphic sequence result from two major processes: the collapse of thick calcarenites and the gradual dismantling of micritic banks at the entrance, primarily driven by freeze-thaw cycles during the Late Pleistocene (Broglio & Dalmeri, 2005; Peresani, 2022).
+
+The sequence of archaeological SUs at Fumane is notably complex, characterized by lateral variations in sediment composition between the cave's interior and exterior, as well as between its western and eastern sides. This variability is primarily due to the abrupt transition between the calcarenite and micrite layers, running roughly transverse to the cave's main axis. Surface dissolution of carbonate sandstones led to sand accumulation in the western side of the cave. At the same time, the fragmentation of micrite banks deposited angular rubble with varying sandy-loamy matrices in the central and eastern sectors. This distinction is evident in both Middle and Upper Paleolithic SUs, reflecting climatic instability and differential rates of wall degradation.
+
+During the early systematic excavations, researchers focused on the upper deposits in the cave exterior, revealing traces of recent landslides and some Upper Paleolithic artifacts. As large boulders were cleared, excavation shifted to the cave interior, thus identifying three primary areas: the cave exterior, characterized by boulder accumulation and silicate silt deposition with quartz and mica; the cave drip line; and the cave interior. The cave interior, with varying micro-scale temperature and humidity, has undergone post-depositional deformations, especially in the eastern zone.
+
+The high-resolution stratigraphic sequence of Fumane (see **Fig. 1c,d**) includes several Middle and Upper Paleolithic SUs, spanning from MIS4 to H3 when the cave ceiling collapsed (Peresani, 2022, and references therein). The most anthropogenically influenced sedimentary body, named macro-unit A, contains multiple thin parallel layers and lenses, including Mousterian (A11–A4), Uluzzian (A3), and Protoaurignacian (A2–A1) occupation floors (e.g., Delpiano & Peresani, 2017; Falcucci & Peresani, 2019; Falcucci et al., 2020; Peresani, 2012; Peresani et al., 2016). Aurignacian assemblages are also found in the lower SUs of the overlying macro-unit D. This sedimentary body is marked by a marked lithological shift and evidence of multiple landslides. The harsh climatic conditions documented in macro-unit D, corroborated by small mammal assemblage studies (López-García et al., 2015), contributed to the systematic collapse of the cave ceiling, eventually sealing its entrance. Landslides alternated with aeolian and colluvial sedimentation and pedogenic processes. Human occupation becomes sporadic in the middle of this macro-unit, associated with the early Gravettian (D1d; Falcucci & Peresani, 2019), and nearly absent in the uppermost SUs. The chronological range of Aurignacian and Gravettian SUs (Falcucci & Peresani, 2019; Higham et al., 2009; Higham, 2011; Marín-Arroyo et al., 2023) places human activity between GS-10 (Rasmussen et al., 2014) and Heinrich Event 3 (Hemming, 2004).
 
 <br>
 
 ## SM S2: Field description of stratigraphic units A2 to D1f
-In this section, we provide a detailed description of all Stratigraphic Units (SUs) studied in this paper. Information has been summarized from the notebooks of all excavation seasons that involved the Upper Paleolithic sequence starting with the lowermost Protoaurignacian SU A2 and ending with the almost sterile SU D1e. A few photos taken during fieldwork complement and provide a visual outlook of the written description (Figs. S1–S12).
+This section provides a detailed description of the SUs studied in the paper. Information has been summarized from the notebooks of all excavation seasons that involved the Upper Paleolithic sequence, starting with the lowermost Protoaurignacian SU A2 and ending with the almost sterile SU D1f. Photographs taken during fieldwork complement and visually enhance the written descriptions (**Figs. S1–S13**).
 
 ### A2
-A2 contains one of the most renowned Protoaurignacian assemblages in Europe, dating back to ~41.2–40.4 ky cal BP (Higham et al., 2009; Higham, 2011). It is a continuous, horizontally bedded SU with a distinct dark brown hue (Munsell Soil Color code: 10YR3/2), characterized by a rich content of charcoals, bones and lithics, as well as dwelling features. A2 spans the entire cave floor and underwent excavation from the start of systematic fieldwork until 2006, with limited interventions in 2014 in the innermost sector of the cave. The total area covered by A2 is approximately 100 square meters (Fig. S3). The SU’s thickness exhibits variability, ranging from a few centimeters to 10 cm in the external area and at the cave entrance, to a maximum of 25 cm in the internal sector of the cave and toward both cave walls. The external area slopes southwestward, extending beyond a ridge of stones and boulders that delineate the dwelling space and a large fire-place. Most of the preserved anthropogenic features are concentrated in the external part of the cave, like combustion features, post-holes, and toss-zones (Figs. S4 and S5). In some instances, these features were excavated at the expense of the underlying Uluzzian (e.g., S9, S10, S18) and Mousterian SUs (e.g., S14), resulting in localized mixing of sediments and archaeological materials (Falcucci et al., 2017; Peresani et al., 2016). 
-Recent micro-contextual analysis of hearth features in the western portion of A2 has revealed that only one feature can be confidently classified as a hearth, while the others represent complex and multi-layered remnants of occupation horizons, partially preserved. The thickness of these features suggests that they resulted from intensive, short, and repeated site use rather than prolonged occupations (Marcazzan et al., 2022). Excavators observed that certain features were deformed by the compressive action of boulders and slabs (e.g., S9 and S13), animal burrowing (e.g., S9), cryoturbation (e.g., S14, S17, S18, S21), or partially eroded by water dripping (e.g., S20). Slight cryoturbation led to an uneven microtopography within the SU and the partial rearrangement of the original orientation of artifacts.
-In contrast, the internal area of A2 is described as a black silty-sand SU with numerous frost-shattered slabs. This SU does not reach the cave walls but ends a few centimeters before them. This phenomenon likely results from the progressive retreat of cave walls, allowing for the formation of loose rubble and potential infiltration of younger sediments and artifacts from the overlying SUs along these cave voids. In cross-section, A2 exhibits a concave shape near the western cave wall (squares 117–115 and 127–125), suggesting the presence of a belt trampled by humans and animals along the cave’s main axis that was inferred during excavation (Broglio & Dalmeri, 2005). In the main excavation area, A2 slopes at an angle of about 10°–20° toward the north, gradually steepening to 30°–40° in the inner cave. In contrast to the external area, artifacts and stones in this sector were found chaotically arranged, particularly in the eastern cave zone and near the walls. The SU itself appears rippled, with stretched and discontinuous boundaries, and contains uplifted artifacts, bones, and stones. SUs are here tilted and compressed, producing a stratigraphic inversion with the Uluzzian and final Mousterian SUs. The geometric layout of A2 and the overlying SUs has been altered by the compressive action of boulders and slabs slipping toward the inner cave due to solifluction. Only one feature, S14 in squares 95–90, was identified in this area — an interpreted combustion feature with a thickness of up to 20 cm, showing signs of deformation due to cryoturbation. Falcucci et al. (2017) noted the presence of a few Mousterian artifacts within this SUs.
+A2 contains one of Europe’s most renowned Protoaurignacian assemblages, dating to approximately 41.2–40.4 ky cal BP (Higham et al., 2009; Higham, 2011). It is a continuous, horizontally bedded SU with a distinct dark brown hue (Munsell Soil Color code: 10YR3/2), rich in charcoal, bones, lithics, and dwelling features. Spanning the entire cave floor, A2 was excavated from the beginning of systematic fieldwork until 2006, with limited interventions in 2014 in the northernmost area of the cave interior, covering about 100 square meters (**Fig. S3**). The thickness of A2 varies from a few centimeters to 10 cm in the cave exterior and around the cave drip line, reaching up to 25 cm in the cave interior near the walls. The cave exterior slopes southwestward, extending beyond a ridge of stones and boulders that mark the dwelling space and a large anthropogenic feature. Most preserved anthropogenic features, including combustion features and toss-zones, are concentrated in the cave exterior and just above the drip line (**Figs. S4** and **S5**). Some features were excavated at the expense of the underlying Uluzzian (e.g., S9, S10, S18) and Mousterian SUs (e.g., S14), leading to localized sediment and artifact mixing (Falcucci et al., 2017; Peresani et al., 2016).
+
+Recent micro-contextual analysis of anthropogenic features in the western portion of A2 revealed that only one feature can be confidently classified as a hearth (S17), while the others represent complex, multi-layered remnants of occupation horizons, partially preserved. The thickness of these features suggests they resulted from intensive, short, and repeated site use rather than prolonged occupations (Marcazzan et al., 2022). Excavators noted that certain features were deformed by the compressive action of boulders and slabs (e.g., S9 and S13), animal burrowing (e.g., S9), cryoturbation (e.g., S14, S17, S18, S21), or partial erosion by water dripping (e.g., S20). Slight cryoturbation caused an uneven microtopography within the SU and partially rearranged the original orientation of artifacts.
+
+In the cave interior, A2 is described as a black silty-sand SU with numerous frost-shattered slabs. It does not reach the cave walls but stops a few centimeters before them, likely due to the progressive retreat of the walls, allowing for loose rubble formation and the possible infiltration of younger sediments and artifacts from overlying SUs. In cross-section, A2 exhibits a concave shape near the western cave wall (squares 117–115 and 127–125), suggesting the presence of a trampled belt along the cave’s main axis (Broglio & Dalmeri, 2005). The SU slopes at an angle of about 10°–20° toward the north in the cave exterior, increasing to 30°–40° in the northernmost interior. Artifacts and stones in this innermost sector were chaotically arranged, particularly in the eastern side and near the walls, where A2 appears rippled with stretched, discontinuous boundaries and contains uplifted artifacts, bones, and stones. SUs here are tilted and compressed, resulting in stratigraphic inversion with the Uluzzian and final Mousterian SUs. The compressive action of boulders and slabs slipping toward the northernmost cave interior due to solifluction has altered the geometric layout of A2 and the overlying SUs. Only one feature, S14 in squares 95–90, was identified in this area, an interpreted combustion feature up to 20 cm thick, showing deformation from cryoturbation. Falcucci et al. (2017) noted the presence of a few Mousterian artifacts in this area.
 
 <br>
 
 ### A1
-A1, primarily located in the external area of the cave, is characterized by its dark brownish hue (10YR3/2) and features horizontal bedding. It exhibits variable thickness, ranging from four to 14 cm across its extension, with a thicker presence in the southeastern side. Notably, frost-shattered slabs become more prominent as one approaches the cave entrance. The upper boundary between A1 and the D3 SUs appears abrupt, displaying signs of deformation and disturbance. On the other hand, the boundary between A1 and A2 generally presents an abrupt demarcation in the external area, although in specific regions where the boundary was indistinct, A1 was excavated alongside the upper portion of A2. Consequently, this situation led to some areas within the excavation where the sediment identified as A2 was in direct contact with the D3 macro-unit. Simultaneously, A1 sediments tended to merge with the overlying SU D3d base in a few square meters (e.g., 46, 56, 66, 57, and 67), primarily due to its inclination. As a result, during excavations, the possibility of artifact admixture between A1 and the base of D3d was hypothesized.
+A1, primarily located in the cave exterior and around the drip line, is characterized by a dark brownish hue (10YR3/2) and horizontal bedding. Its thickness ranges from four to 14 cm, with the thickest sections on the southeastern side. Frost-shattered slabs become more prominent near the drip line. The upper boundary between A1 and the D3 SUs shows signs of deformation and disturbance **Fig. S6**), while the boundary between A1 and A2 is generally abrupt in the eastern cave exterior. In the southwestern area, however, the boundary between A2 and A1 was indistinct, leading to its co-excavation with the upper A2 portion. Consequently, some square meters show direct contact between A2 and the D3 SUs. Additionally, A1 sediments tended to merge with the base of SU D3d in a few square meters (e.g., 46, 56, 66, 57, and 67), mainly due to its inclination, prompting hypotheses about artifact mixing between A1 and the base of D3d during excavations.
 
 <br>
 
 ### A2R
-In the internal sector of the cave, A2 displayed a rather discontinuous character. In the eastern side, a distinctive dark reddish SU (Fig. S6a), characterized by the prevalence of frost-shattered slabs, intertwined with the darker sediments of A2 to the extent that it nearly entirely replaced them. This SU received the designation A2R (with “R” signifying red), and its thickness varies from ten to 25 cm as one moves toward the eastern cave wall. A2R is marked by significant disturbances and undulations, occasionally exhibiting a stratigraphic inversion with respect to the Uluzzian SU A3, as identified in square 127. Moreover, in the squares adjacent to the eastern cave wall, A2R is overlaid by the Mousterian SU A5+A6, resulting in an inverted stratigraphic sequence due to the tilting and compression of the stratigraphic package. This compression led to the formation of a pronounced fold that elevates A2R by up to 50 cm, nearly reaching the surface (Fig. S6b). Remarkably, this fold serves as the abrupt boundary for the deposition of yellow sands in the western portion (SU D1c) and frost-shattered gravel in the eastern sector (SU D3+D6).
+In the cave interior, A2 displayed a rather discontinuous character. In the eastern side, a distinctive dark reddish SU (**Fig. S7a**), dominated by frost-shattered slabs, intermingled with the darker A2 sediments, nearly replacing them. This SU, designated as A2R (“R” for red), varies in thickness from 10 to 25 cm toward the eastern cave wall. A2R is notably disturbed and undulated, occasionally showing a stratigraphic inversion with the Uluzzian SU A3, especially in square 127. Adjacent to the eastern cave wall, A2R is overlain by the Mousterian SU A5+A6, leading to an inverted stratigraphy due to the tilting and compression of the stratigraphic package. This compression has created a prominent fold, elevating A2R up to 50 cm, almost reaching the surface (**Fig. S7b**). This fold sharply demarcates the deposition of yellow sands in the western sector (SU D1c) and frost-shattered gravel in the eastern sector (SU D3+D6).
 
 <br>
 
-### The D3 complex in the external area of the cave
-In the external area of the cave, SUs A2 and A1 were overlaid by a detrital stratigraphic complex named D3, which was further subdivided into several SUs based on lithological content and archaeological evidence. D3 constitutes a compound stratigraphic complex comprising sandy loamy sediments with a weak angular polyhedral structure and small frost-shattered slabs, often arranged in thin layers that typically slope inward into the cavity. It is important to note that the SUs within D3 do not precisely correspond to those described in the internal part of the cave. This discrepancy arises from the condensation of the sequence, changes in sediment facies, and the combined effects of post-depositional deformations. Although the D3 SUs may not be as archaeologically rich as A2 and A1, they play a crucial role in framing the chrono-cultural development of the Aurignacian in northeastern Italy (Falcucci et al., 2020). The D3 SUs can be described as follows:
+### The D3 complex in the cave exterior and around the drip line
+In the cave exterior and around the drip line, SUs A2 and A1 are overlain by a detrital stratigraphic complex named D3, further subdivided into several SUs based on lithological content and archaeological evidence (see **Fig. S1**). D3 comprises sandy loamy sediments with a weak angular polyhedral structure and small frost-shattered slabs, often arranged in thin layers that typically slope inward into the cavity. Notably, the SUs within D3 do not precisely match those described in the cave interior due to changes in sediment facies, post-depositional deformations, and the thinning of the sequence. While the D3 SUs may not be as archaeologically rich as A2 and A1, they are crucial for understanding the chrono-cultural development of the Aurignacian in northeastern Italy (Falcucci et al., 2020). The D3 SUs are detailed as follows:
 
-**D3dbase.** The lowest SU within the D3 complex was designated as D3d base, and it was observed to be in direct contact with either A1 or A2. The sediment composition in this SU was noted to exhibit slight differences compared to the overlying D3d. In the proximity of tunnel A, D3d base primarily consisted of sands, which had also filled erosional structures resulting from water dripping from tunnel A, at the expense of A2. Overall, D3d base appeared to complement SU A1 stratigraphically in certain square meters, such as 57-67-68.
+**D3dbase.** The lowest SU within the D3 complex, D3d base, is observed in direct contact with either A1 or A2. Its sediment composition exhibits slight differences compared to the overlying D3d. Near Tunnel A, D3d base primarily consists of sands that filled erosional structures caused by water dripping from the tunnel, at the expense of A2. In some areas, such as squares 57, 67, and 68, D3d base appears to stratigraphically complement SU A1.
 
-**D3d.** This SU documents the occurrence of the initial landslide event at Fumane Cave, characterized by a dense accumulation of boulders and angular stones, each approximately 10 cm in size, mixed with a sandy fine fraction (Fig. S7). Interestingly, a portion of this accumulation of small stones was observed to be intentionally arranged in a regularized fashion, forming a sub-horizontal pavement (as detailed in Peretto et al., 2004). However, no geoarchaeological studies have been conducted to support this interpretation. D3d tends to be thicker in the external area of the cave but gradually decreases in thickness as one moves inward. While its boundary with the overlying SU D3b alpha was well-defined in the western area of the cave, it was not consistently defined in the eastern portion during excavations. SU D3d contained accumulations of stone artifacts and bones. It’s noteworthy that Falcucci et al. (2020) treated D3b alpha and D3d as a single analytical unit following a post-hoc correlation based on the examination of fieldwork notebooks and excavation documentation.
+**D3d.** D3d marks the first documented landslide event at Fumane Cave, characterized by a dense accumulation of boulders and angular stones, each around 10 cm in size, mixed with a sandy fine fraction (**Fig. S8**). A portion of these stones appears to be intentionally arranged in a sub-horizontal pavement, although no geoarchaeological studies have verified this interpretation (Peretto et al., 2004). D3d is thicker in the cave exterior and gradually thins inward. While its boundary with the overlying SU D3b alpha is well-defined in the southwestern area, it was inconsistently defined in the southeastern area during excavations. This SU contains accumulations of stone artifacts and bones. Notably, Falcucci et al. (2020) treated D3b alpha and D3d as a single analytical unit based on fieldwork and excavation documentation.
 
-**D3b alpha.** This SU stands out as the most conspicuous anthropogenic phase within the D complex and has been dated to after the onset of Heinrich Event 4 (Marín-Arroyo et al., 2023).  It was initially identified as a sandy-silty dark brown SU situated at the base of SU D3b and was meticulously excavated (Fig. S8a), primarily in the southwestern portion of the cave, starting from 1996 onwards. Previous excavations conducted in the southeastern sector failed to identify this thin SU at the base of D3b, explaining why the spatial distribution of archaeological remains appears to end abruptly along the midline of the excavation area (Broglio et al., 2006). The meticulous excavation carried out in the southwestern side of the cave facilitated a more precise documentation of this anthropic SU, possibly aided by the distinct composition of sediments and higher content in cultural remains in this area. Archaeological finds from D3b alpha, recovered within a few centimeters of thickness, include a remarkably well-preserved anthropogenic feature in square 57 (designated as S15), two primary accumulations of lithic artifacts indicative of lithic workshops (Fig. S8b), scattered bones, and even a split-based antler point. Many of the artifacts retrieved from D3b alpha were carefully piece-plotted (n = 352), and De Stefani (2003) found a few debitage refits. Excavators noted that soil frost caused some rearrangement in the disposition of artifacts around S15, as well as in the square meters near the cave entrance. However, despite the artifacts were not being found in their primary positions, they appeared to be mostly in place. The overall inclination of the SU is toward the north, and this gradient increases gradually as one moves towards tunnel B. In the vicinity of tunnel A, the SU appears to have been eroded by hydrological activity. This erosive boundary was subsequently filled with sands transported from the tunnel, resulting in an alternating pattern of thin sandy strips and blackish sandy-silt sediments. Sediments in the outermost excavated area are nearly devoid of archaeological materials, while D3b alpha seems to extend toward the cave’s mouth.
+**D3b alpha.** D3b alpha represents the most notable evidence of human occupation within the D3 complex, and it dates to the Heinrich Event 4 (Marín-Arroyo et al., 2023). Identified as a sandy-silty dark brown SU at the base of D3b, D3b alpha was excavated mainly in the southwestern area of the cave from 1996 onward (**Fig. S9a**). Earlier excavations in the southeastern area did not identify this thin SU, potentially due to differential sediment deposition and excavation techniques, which could explain the abrupt end of the SU spatial distribution along the midline of the excavation area (Broglio et al., 2006). The careful excavation in the southwestern area of the cave and around the drip line allowed for precise documentation of this SU, potentially aided by distinct sediment composition and a higher concentration of cultural remains. Archaeological finds from D3b alpha, typically within a few centimeters of sediment, include a well-preserved anthropogenic feature in square 57 (S15), two primary lithic workshops (**Fig. S9b**), scattered bones, and a split-based antler point. Numerous artifacts (n = 352) were meticulously piece-plotted, and some debitage refits were noted (De Stefani, 2003). Excavators observed that frost activity caused minor rearrangement of artifacts near S15 and the drip line, but despite this, artifacts generally appeared in place. The SU slopes northward, with the gradient increasing toward Tunnel B. Near Tunnel A, D3b alpha shows signs of erosion from hydrological activity, with sands from the tunnel filling erosive boundaries, creating alternating sandy strips and blackish sandy-silt sediments. The outermost excavated area contains minimal archaeological material, while D3b alpha seems to extend inward.
 
-**D3b and D3a.** During the initial excavation seasons, spanning from 1989 to 1995, two main SUs, D3a (upper) and D3b (lower), were distinguished within the D3 complex. D3a is characterized by a sandy composition intermingled with frost-shattered slabs and aeolian dust. Its thickness varies, diminishing from approximately 9 cm in the outermost area of the cave to just a few centimeters at the entrance. Due to the relatively sparse presence of archaeological artifacts, D3a was subdivided into four sub-SUs and subjected to non-consistent sieving. D3b extends beneath D3a across most of the external cave area. D3b presents a more substantial archaeological content than D3a. It includes charcoal deposits, fauna remains, and a split-based antler point analogous to the one discovered in D3b alpha. Evidence of on-site knapping was also unearthed, exemplified by the presence of a core with several refitted bladelets and maintenance flakes (Bertola et al., 2013). As excavations progressed toward the inner part of the cave, D3a and D3b tended to merge and gradually thin out. Consequently, they were excavated collectively as D3a+b in this internal sector of the cave.
+**D3b and D3a.** During the initial excavation seasons (1989–1995), two main SUs, D3a (upper) and D3b (lower), were distinguished within the D3 complex. D3a is characterized by sandy sediments mixed with frost-shattered slabs and aeolian dust, with thickness varying from about 9 cm in the cave exterior to a few centimeters after the drip line. Due to sparse artifact content, D3a was subdivided into four sub-SUs and not systematically sieved. D3b lies beneath D3a, containing richer archaeological content, including charcoal deposits, faunal remains, and a split-based antler point (i.e., square 65) analogous to the one discovered in D3b alpha. Evidence of on-site knapping is also present, with a core showing refitted bladelets and maintenance flakes (Bertola et al., 2013). As excavations progressed inward, D3a and D3b merged and thinned, prompting collective excavation as D3a+b toward the cave interior.
 
 <br>
 
-### D6 and D3 in the internal area of the cave
-**D6.** In the eastern area of the excavation, immediately following the cave entrance and in close proximity to tunnel C, a distinctive pocket of angular clast-supported open-work breccia was identified, overlaying SU A2 (Fig. S9). This distinct SU was designated as D6 and received substantial excavation attention during the initial fieldwork seasons. D6 was characterized by considerable thickness and was divided into two separate artificial spits: the upper portion, denoted as D6a, exhibited a notable scarcity of archaeological materials, while the lower section, referred to as D6b, contained a relatively high concentration of artifacts. Unfortunately, in numerous instances, the archaeological materials uncovered within SU D6 were not spatially documented. This might be attributed to the chosen excavation strategy, which prioritized rapid access to SU A2.
+### D6 and D3 in the cave interior
+**D6.** North of the drip line, a distinct pocket of angular clast-supported open-work breccia was identified above SU A2 (**Fig. S10**). This SU was designated as D6 and was mostly excavated during the initial fieldwork seasons. D6 is characterized by a substantial thickness and was divided into two artificial spits: D6a (upper portion) exhibited a notable scarcity of archaeological materials; D6b (lower portion) contained a relatively high concentration of artifacts. However, in many cases, the spatial documentation of the artifacts within D6 was incomplete, likely due to an excavation strategy that focused on quickly accessing SU A2.
 
-**D3+D6.** Initially, this SU was excavated in a region roughly corresponding to the location of D6, primarily to delineate the transversal transition between the angular breccia of D6 and D3a+b. This transition was observed primarily in the western sector of the excavation area. The sediment composition of this SU closely resembled that of D6, primarily consisting of an open-work angular breccia with silty-sandy fine particles. The spatial distribution of D3+D6 appeared rather sporadic. As the excavation progressed towards the innermost part of the cave, the same designation, D3+D6, was employed to describe a thick SU of frost-shattered slabs originating from the cave wall (Fig. S10). In this region, D3+D6 was divided into a basal SU approximately 30 cm thick and a main SU measuring 40–50 cm in thickness. It extended transversely to D1c, which was found in the western part of the cave. In the innermost portions of the cave (e.g., square 157), D3+D6 replaced all other underlying and overlying SUs, coming into direct contact with the Mousterian SU A5+A6. The challenge of identifying a clear separation between SUs in this area was noted by Falcucci et al. (2017) and has been more recently addressed by Peresani et al. (2021).
+**D3+D6.** Initially excavated north of the drip line in the proximity of Tunnel C, this SU aimed to delineate the transition between the angular breccia of D6 and D3a+b, particularly toward the western sector of the excavation area. The sediment composition closely resembles D6, primarily consisting of open-work angular breccia with silty-sandy fine particles, and its distribution appears sporadic. As excavations moved inward, D3+D6 was used to describe a thick SU of frost-shattered slabs originating from the cave wall (**Fig. S11**). In the innermost cave areas, D3+D6 was subdivided into a lower SU (approx. 30 cm thick) and an upper SU (40–50 cm thick), extending transversely to D1c, found in the western cave. In areas like square 157, D3+D6 replaced other SUs, directly overlying the Mousterian SU A5+A6. Identifying clear separations between SUs in this area was challenging (Falcucci et al., 2017; Peresani et al., 2021).
 
-**D3a+b, D3b alpha, and D3a+b sabbie.** In the western part of the internal cave, SUs exhibit significant variations in sediment composition. Following A2, a thin SU, labeled as D3a+b, was interpreted as a stratigraphic continuation of D3a and D3b. This SU is characterized by dark-brown sandy-loamy sediment with few frost-shattered slabs, extending roughly laterally to SUs D6 and D3+D6. The exact stratigraphic relationships with these SUs are not entirely clear. The base of D3a+b appeared much darker and richer in organic material, charcoal, and archaeological content, measuring 2–3 cm in thickness (Fig. S11). This SU was correlated with D3b alpha, which was excavated in the southwestern part of the cave. However, in the innermost area of the excavation, the dark component of this SU became increasingly sparse until it disappeared. Below D3a+b and D3b alpha, a yellow sandy SU known as D3a+b sabbie (sabbie meaning sands in Italian) was described, likely formed from the surface dissolution of local calcarenites. This SU varies in thickness from 1 to 15 cm and exhibits an irregular and discontinuous surface. In some instances, D3a+b sabbie filled the erosive depressions found in SUs A2 and A2R.
+**D3a+b, D3b alpha, and D3a+b sabbie.** In the western sector of the cave interior, SUs vary significantly in sediment composition. Following A2, a thin SU labeled D3a+b, interpreted as a continuation of D3a and D3b from the cave exterior, consists of dark-brown sandy-loamy sediment with few frost-shattered slabs (see **Fig. S2**), extending laterally to SUs D6 and D3+D6. The base (D3b alpha) is darker and richer in organic material, charcoal, and artifacts, measuring 2–3 cm in thickness (**Fig. S12**). It thins out in the innermost excavation area and, according to the excavators, correlates with D3b alpha excavated externally. Below D3a+b and D3b alpha, a yellow sandy SU, labeled D3a+b sabbie (sabbie meaning sands in Italian), likely formed from surface dissolution of local calcarenites. Its thickness varies from 1 to 15 cm, with an irregular and discontinuous surface, sometimes filling erosive depressions found in SUs A2 and A2R.
 
 <br>
 
 ### The D1 complex
-The SUs constituting the D1 complex represent the final phase of sedimentation at Fumane Cave, ultimately sealing the cave. D1 covers the entire excavated area, with its thickness gradually decreasing as one moves towards the inner cave, where post-depositional deformations occurred under the influence of periglacial conditions. D1 was subdivided into various SUs based on their lithological characteristics.
+The D1 complex marks the final phase of sedimentation at Fumane Cave, ultimately sealing the cave. Covering the entire excavation area, its thickness decreases toward the cave interior, where post-depositional deformations occurred under periglacial conditions. D1 was subdivided based on lithological characteristics:
 
-**D1c.** The lowest SU was directly in contact with D3a+b and contained limited archaeological evidence within a predominantly light brown laminated sand groundmass, reaching a thickness of approximately 25–30 cm. This SU is an accumulation of boulders, likely associated with the most significant rockfall event documented at the site. Fieldnotes indicate that some of the smaller boulders moved inward due to gelifluction, causing noticeable deformation of the sediments beneath their front. The stoniness becomes more pronounced in the inner cavity, while open-work breccia characterizes the areas near the cave wall.
+**D1c.** This lowest SU, directly in contact with D3a+b, has limited archaeological evidence within a predominantly light brown laminated sand groundmass (see **Fig. S2**). It measures approximately 25–30 cm in thickness and represents a significant rockfall event documented at the site. Field notes indicate that some of the smaller boulders show signs of inward movement due to gelifluction, deforming the underlying sediments, with stoniness increasing inward and open-work breccia near the cave wall.
 
-**D1d.** D1c was overlain by a SU of sandy-loam brown sediment with mild polyhedral aggregation and frost-shattered slabs oriented toward the external margin of the cavity (Fig. S12). The SU’s base is approximately 5 cm thick and contained a small number of lithic artifacts attributed to the Gravettian period, predating Heinrich Event 3 (López-García et al., 2015). Charcoal is a significant component of this SU and forms a continuous charcoal line at its base (Falcucci & Peresani, 2019).
+**D1d.** Overlying D1c, this SU consists of sandy-loam brown sediment with mild polyhedral aggregation and frost-shattered slabs oriented toward the cave’s external margin (**Fig. S13**). Its base, around 5 cm thick, contains lithic artifacts attributed to the early Gravettian, predating Heinrich Event 3 (López-García et al., 2015). Charcoal is a significant component of this SU and forms a continuous charcoal line at its base (Falcucci & Peresani, 2019).
 
-**D1e–D1f.** The uppermost SUs D1e and D1f, corresponds to the most recent rockfall event from the cliff. It consists of boulders and frost-shattered slabs embedded within a brown silty-sandy matrix. Some of these boulders accumulated on the external margin of the cavity, while others slid down the slope into the inner cave. The top SU, D1f, represents a rendzina soil that has developed on a loose open-work breccia. This SU can reach a thickness of up to 12 cm and was found exposed on the surface at the back of the cave. D1e and D1f contain very few lithic artifacts and are characterized by the presence of numerous herbivore bones with gnawing marks, indicating frequent visits by carnivores during this phase.
+**D1e–D1f.** The uppermost SUs correspond to the latest rockfall event, comprising boulders and frost-shattered slabs in a brown silty-sandy matrix. Some boulders accumulated near the cave drip line, while others slid down the slope into the inner cave. The top SU, D1f, represents a rendzina soil developed on loose open-work breccia, reaching up to 12 cm thick and exposed on the cave’s surface (see **Figs. S2** and **S11**). These SUs contain few lithic artifacts but numerous herbivore bones with gnawing marks, suggesting frequent visits by carnivores during this phase.
 
 <br>
 
-### Summary of the main post-depositional events and agents identified
-The formation of the Upper Paleolithic stratigraphic sequence at Fumane Cave has been influenced by various post-depositional events and disturbance agents, which have had an impact on the preservation of anthropogenic features. These agents can be classified into two categories: geological and biological. Geological agents have been primarily driven by the harsh climatic conditions that characterized the transition from the MIS3 to the beginning of the MIS2. These conditions led to periglacial activity, including frost action, which in turn resulted in the gradual collapse of the cave’s ceiling. This collapse played a major role in shaping the sedimentary layers and their composition. Biological agents also contributed to post-depositional disturbances. Animal burrows, likely created by animals such as marmots and dormice, represent one of these agents. Additionally, human activity in the form of combustion features and trampling left their mark on the site. At a microscale, soil mesofauna and plant roots contributed to burrowing and disturbance.
-Marmot burrows were easily identified during excavations because they were very few and isolated within the primary deposits. These burrows were often located in close proximity to anthropic features, such as S9 andS10. The result of this interaction was a mixing of sediments of different colors and, in some instances, the mix of archeological materials. To address this issue, archeological materials excavated within animal burrows were typically labeled accordingly. However, in cases where smaller or less conspicuous features were involved, it was not always possible to maintain a clear separation from the surrounding archeological SUs.
-Additionally, there is some evidence of percolation and dripping of water, including snow meltwater, which may have affected the SUs (Kehl et al., in preparation). Shallow channels filled with sterile sands, particularly near tunnel A (e.g., sq. 49–59), serve as indicators of these processes, especially when the SUs were still exposed on the surface or only partially buried.
-The external area of the cave was primarily affected by multiple landslide events. These events, which occurred during at least three distinct instances, resulted in the collapse of several boulders and slabs. This, coupled with erosion in the outermost region of the excavation, likely led to the partial erosion of archaeological deposits. Some boulders even rolled toward the internal cave area due to solifluction—a process driven by the alternating cycles of freezing and thawing. These displaced boulders were likely responsible for compressing and deforming the SUs, including combustion features like S10.
-Conversely, the internal area of the cave experienced multiple cryoturbation events caused by the freezing and thawing activity, attributed to increased humidity in this underground environment. The effects of frost activity are evident in the undulated morphology of the SUs. It began to be recorded beneath the cave vault and became more pronounced toward the innermost sector. These events resulted in the frequent alteration of the original arrangement of artifacts, often causing them to become tilted up to oriented vertically. In some extreme cases, localized stratigraphic inversion was observed and documented accordingly.
-A noteworthy aspect of the site is the detailed micromorphological study that was conducted, revealing that the Middle and Upper Paleolithic sequence experienced minimal sediment reworking and maintained a high degree of stratigraphic integrity (Kehl et al., in preparation). This micromorphological analysis not only supports the field observations but also provides additional insights into the impact of post-depositional events. However, it is important to mention that the thin sections available for the Protoaurignacian SUs do not cover the most disturbed areas of the excavations, particularly in the back of the cave. Interestingly, the micromorphological evidence suggests that instances of anthropogenic sedimentation and trampling are relatively rare outside of anthropogenic features. The main diachronic changes identified in the sediment record appear to be linked more to fluctuations in moisture levels rather than temperature variations, as detailed in Kehl et al. (in preparation).
+### Summary of the main post-depositional events and agents
+The formation of the Upper Paleolithic stratigraphic sequence at Fumane Cave has been influenced by various post-depositional events and disturbance agents, which have impacted the preservation of anthropogenic features. These agents can be classified into two categories: geological and biological. Geological agents have been primarily driven by the harsh climatic conditions that characterized the transition from MIS3 to the beginning of MIS2. These conditions led to periglacial activity, including frost action, which in turn resulted in the gradual collapse of the cave’s ceiling. This collapse played a major role in shaping the geological layers and their composition. Biological agents also contributed to post-depositional disturbances. Animal burrows, likely created by marmots and dormice, represent one of these agents. Additionally, human activity in the form of combustion features and trampling left their mark on the site. At a microscale, soil mesofauna, and plant roots contributed to burrowing and disturbance.
+
+Marmot burrows were frequently identified during excavations because they were very few and isolated within the primary deposits. These burrows were often located in close proximity to anthropic features, such as S9 and S10. The result of this interaction was a mixing of sediments of different colors and, in some instances, the mixing of archaeological materials from different phases. To address this issue, archaeological materials excavated within animal burrows were typically labeled accordingly. However, in cases where smaller or less conspicuous features were involved, it was not always possible to maintain a clear separation from the surrounding archaeological SUs.
+
+Additionally, there is some evidence of percolation and dripping of water, including snow meltwater, which may have affected the SUs (Kehl et al., in preparation). Shallow channels filled with sterile sands, particularly near Tunnel A (e.g., sq. 49–59), serve as indicators of these processes, especially when the SUs were still exposed on the surface or only partially buried.
+
+The cave exterior was primarily affected by numerous landslide events. These events, which occurred during at least three distinct instances, resulted in the collapse of several boulders and slabs. This, coupled with erosion in the southernmost region of the excavation, likely led to the partial destruction of archaeological deposits. Some boulders even rolled toward the cave interior due to solifluction—a process driven by the alternating cycles of freezing and thawing. These displaced boulders were likely responsible for compressing and deforming the SUs, including combustion features like S10.
+
+Conversely, the cave interior experienced multiple cryoturbation events caused by freezing and thawing activity, attributed to increased humidity in this underground environment. The effects of frost activity are evident in the undulated morphology of the SUs. It began to be recorded around the cave drip line and became more pronounced toward the northernmost area of the cave interior. These events resulted in the frequent alteration of the original arrangement of artifacts, often causing them to become tilted up and oriented vertically. In some extreme cases, localized stratigraphic inversion was observed and documented accordingly.
+
+A noteworthy aspect of Fumane is the detailed micromorphological study that was conducted, revealing that the Middle and Upper Paleolithic sequence experienced minimal sediment reworking and maintained a high degree of stratigraphic integrity (Kehl et al., in preparation). This micromorphological analysis not only supports the field observations but also provides additional insights into the impact of post-depositional events. However, it is important to mention that the thin sections available for the Aurignacian SUs do not cover the most disturbed areas of the excavations, particularly in the cave’s most internal areas. Interestingly, the micromorphological evidence suggests that occurrences of anthropogenic sedimentation and trampling are relatively rare outside of anthropogenic features. The main diachronic changes identified in the sedimentary record appear to be linked more to fluctuations in moisture levels rather than temperature variations, as detailed in Kehl et al. (in preparation).
 
 <br>
 
@@ -247,7 +258,7 @@ A noteworthy aspect of the site is the detailed micromorphological study that wa
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S1.png")
 ```
-  **Figure S1.** Photograph of the sagittal section exposed in squares 136 and 146 during the 2003 excavation campaign, revealing stratigraphic units from D1f to A9. Note the tilt caused by post-depositional deformations.
+  **Figure S1.** Stratigraphic section at the entrance of Tunnel A showing stratigraphic units D1e to A2. Note the gradual increase in loamy-sandy sediments over the coarse fraction as it transitions towards the cave exterior (excavation campaign 1992).
 
 <br>
 
@@ -255,7 +266,7 @@ knitr::include_graphics("../output/figures/Figure_S1.png")
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S2.png")
 ```
-  **Figure S2.** Close-up photograph of the left portion of the section depicted in Fig. 1c, showing stratigraphic units D3a, D3b, A1, and A2. Pay attention to the prevalent fine sandy-loamy matrix and the tilted laminated levels of very small stones.
+  **Figure S2.** Photograph of the sagittal section exposed in squares 136 and 146 during the 2003 excavation campaign, revealing stratigraphic units from D1f to A9 in the innermost area of the cave. Note the tilt caused by post-depositional deformations.
 
 <br>
 
@@ -263,7 +274,7 @@ knitr::include_graphics("../output/figures/Figure_S2.png")
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S3.png")
 ```
-  **Figure S3.** Figure S3. Excavation of stratigraphic unit A2 during the 1998 excavation campaign, spanning across the cave entrance and mouth. Observe the accumulation of charcoal features in the central area of the photograph, facing west.
+  **Figure S3.** Excavation of stratigraphic unit A2 during the 1998 excavation campaign, spanning across the cave exterior and the cave drip line. Observe the accumulation of charcoal features in the central area of the photograph, facing west.
 
 <br>
 
@@ -287,15 +298,13 @@ knitr::include_graphics("../output/figures/Figure_S5.png")
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S6.png")
 ```
-  **Figure S6.** **a**) View of the ochre patch of A2R exposed during the 2001 excavation campaign in squares 117, 126, and 127 along the main sagittal section and at the base of the W-E section. Note the slope on the bottom left of the excavation; **b**) Exposure of A2 and A2R during the 2003 excavation campaign in the innermost area of the cave (squares 127, 128, and 137). Pay attention to the pronounced fold in the proximity of the right cave wall.
-
-<br>
+  **Figure S6.** Deformations of the original sedimentary pattern in A2, A1, and D3d base, with patchy intrusions of A2 sediment into D3d base, undulating boundaries between layers, and rearrangement of stones in D3d base, as observed in the S-N section of square 87 (looking NE; 1998 excavation campaign).
 
 ### Figure S7
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S7.png")
 ```
-  **Figure S7.** Two views (**a** and **b**) of the accumulation of small-sized subangular blocks, likely arranged to form a pavement in stratigraphic unit D3d excavated during the 1990 excavation campaign. For size reference, the plate displaying the name of the site and unit measures 20x15 cm.
+  **Figure S7.** **a**) View of the ochre patch of A2R exposed during the 2001 excavation campaign in squares 117, 126, and 127 along the main sagittal section and at the base of the W-E section. Note the slope on the bottom left of the excavation; **b**) Exposure of A2 and A2R during the 2003 excavation campaign in the innermost area of the cave (squares 127, 128, and 137). Pay attention to the pronounced fold in the proximity of the right cave wall.
 
 <br>
 
@@ -303,7 +312,7 @@ knitr::include_graphics("../output/figures/Figure_S7.png")
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S8.png")
 ```
-  **Figure S8.** **a**) Excavation of stratigraphic unit D3balpha during the 1997 campaign in the western portion of the cave; **b**) Close-up photograph of the accumulation of lithics in squares 58–68.
+  **Figure S8.** Two views (**a** and **b**) of the accumulation of small-sized subangular blocks, likely arranged to form a pavement in stratigraphic unit D3d excavated during the 1990 excavation campaign. For size reference, the plate displaying the name of the site and unit measures 20x15 cm.
 
 <br>
 
@@ -311,7 +320,7 @@ knitr::include_graphics("../output/figures/Figure_S8.png")
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S9.png")
 ```
-  **Figure S9.** Stratigraphic unit D6 under excavation during the 2001 excavation campaign in the internal area of the cave. Note the clear difference between the breccia sediment of D6 and the underlying A2, which contains charcoal and ochre.
+  **Figure S9.** **a**) Excavation of stratigraphic unit D3balpha during the 1997 campaign in the western portion of the cave. The section visible at the back corresponds to Fig. S1; **b**) Close-up photograph of the accumulation of lithics in squares 58–68.
 
 <br>
 
@@ -319,7 +328,7 @@ knitr::include_graphics("../output/figures/Figure_S9.png")
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S10.png")
 ```
-  **Figure S10.** Excavation of A2, A2R, and D3+D6 during the 2002 excavation campaign in squares 125, 126, 135, and 136. Pay attention to the sharp difference in sediment composition between A2 and the frost-shattered stones characterizing stratigraphic units A2R and D3+D6.
+  **Figure S10.** Stratigraphic unit D6 under excavation during the 2001 excavation campaign in the cave interior. Note the clear difference between the breccia sediment of D6 and the underlying A2, which contains charcoal and ochre.
 
 <br>
 
@@ -327,7 +336,7 @@ knitr::include_graphics("../output/figures/Figure_S10.png")
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S11.png")
 ```
-  **Figure S11.** Exposure of stratigraphic units D3b alpha and D3a+b in squares 127, 128, and 137 during the 2005 excavation campaign. Pay attention to the dark color of D3b alpha in this area of the cave compared to D3a+b.
+  **Figure S11.** Excavation of A2, A2R, and D3+D6 during the 2002 excavation campaign in squares 125, 126, 135, and 136. Pay attention to the sharp difference in sediment composition between A2 and the frost-shattered stones characterizing stratigraphic units A2R and D3+D6.
 
 <br>
 
@@ -335,7 +344,7 @@ knitr::include_graphics("../output/figures/Figure_S11.png")
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S12.png")
 ```
-  **Figure S12.** Excavation of stratigraphic unit D1d during various excavation campaigns: **a** and **b**) in the cave-mouth during 1991, **c**) in square 78 at the entrance of tunnel A in 1996, **d**) in square 127 in 2001, **e**) in squares 126 and 136 in 2002, and **f**) in squares 127 and 137 in 2005. Pay attention to the presence of large fragments of charred wood in D.
+  **Figure S12.** Exposure of stratigraphic units D3b alpha and D3a+b in squares 127, 128, and 137 during the 2005 excavation campaign. Pay attention to the dark color of D3b alpha in this area of the cave compared to D3a+b.
 
 <br>
 
@@ -343,7 +352,7 @@ knitr::include_graphics("../output/figures/Figure_S12.png")
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S13.png")
 ```
-  **Figure S13.** Plan view of the cave showing its three main tunnels (A, B, and C) and the numbered square meter grid utilized during excavations. Dotted lines indicate the cave drip line and unexposed walls of the cave tunnels.
+  **Figure S13.** Excavation of stratigraphic unit D1d during various excavation campaigns: **a** and **b**) in the cave interior during 1991, **c**) in square 78 at the entrance of Tunnel A in 1996, **d**) in square 127 in 2001, **e**) in squares 126 and 136 in 2002, and **f**) in squares 127 and 137 in 2005. Pay attention to the presence of large fragments of charred wood in **d**.
 
 <br>
 
@@ -351,7 +360,7 @@ knitr::include_graphics("../output/figures/Figure_S13.png")
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("../output/figures/Figure_S14.png")
 ```
-  **Figure S14.** **a**) Organization of the working tables for conducting break connection searches at the Department of Humanities, Anthropological and Prehistoric Unit, University of Ferrara; **b**) Identification of a few break connections; **c**) Table displaying blade fragments from Scaglia Variegata, Scaglia Rossa, and other less common raw materials. Fragments are arranged based on fragmentation, with proximal portions at the bottom, followed by mesial and distal fragments; **d**) Table presenting non-cortical blade fragments from the Maiolica variety, the most abundant raw material at the site. The arrangement follows the same fragmentation system as described above; **e**) Collection of blades made on Maiolica, showing variations in cortical coverage on the left side of the fragments. Two additional groups were established to compare blades with cortical coverage on the middle and right sides.
+  **Figure S14.** **a**) Organization of the working tables for conducting break connection searches at the Department of Humanities, Anthropological and Prehistoric Unit, University of Ferrara; **b**) Identification of a few break connections; **c**) Table displaying blade fragments from Scaglia Variegata, Scaglia Rossa, and other less common raw materials. Fragments are arranged based on fragmentation, with proximal portions at the bottom, followed by mesial and distal fragments; **d**) Table presenting non-cortical blade fragments from the Maiolica variety, the most abundant raw material at the site. The arrangement follows the same  system as described above; **e**) Collection of blades made on Maiolica, showing variations in cortical coverage on the left side of the fragments. Two additional groups were established to compare blades with cortical coverage on the middle and right sides.
 
 <br>
 
@@ -364,15 +373,15 @@ knitr::include_graphics("../output/figures/Figure_S15.png")
 <br>
 
 ### Figure S16
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=10, fig.height=6, fig.retina=2}
 dataset.complete.reduced %>%
   mutate(SU = recode(SU, D3b.alpha = "D3b alpha")) %>%
   rename(`Blank type` = blank) %>%
   filter(class == "Blank") %>%
   ggbarstats(x = `Blank type`, y = SU, label = "both") +
-  theme(text = element_text(size = 14),
-        axis.text = element_text(size = 14),
-        axis.title = element_text(size = 14)) +
+  theme(text = element_text(size = 16),
+        axis.text = element_text(size = 16),
+        axis.title = element_text(size = 16)) +
   scale_fill_manual(values=met.brewer("Navajo", 3))
 ```
   **Figure S16.** Stacked bar charts illustrating the distribution of flakes, bladelets, and blades across the studied assemblages. The figure is complemented by the Pearson’s χ2-test of independence, demonstrating that the variation in the frequency of blank types between assemblages is statistically significant. Tools have been excluded from this quantification.
@@ -380,16 +389,16 @@ dataset.complete.reduced %>%
 <br>
 
 ### Figure S17
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=12, fig.height=10, fig.retina=2}
 dataset.complete.reduced %>%
   mutate(SU = recode(SU, D3b.alpha = "D3b alpha")) %>%
   rename(Technology = technology) %>%
   filter(class == "Blank") %>%
   filter(blank == "Flake") %>%
   ggbarstats(x = Technology, y = SU, label = "both") +
-  theme(text = element_text(size = 14),
-        axis.text = element_text(size = 14),
-        axis.title = element_text(size = 14)) +
+  theme(text = element_text(size = 18),
+        axis.text = element_text(size = 18),
+        axis.title = element_text(size = 18)) +
   scale_fill_manual(values=met.brewer("Navajo", 4))
 ```
   **Figure S17.** Stacked bar charts illustrating the distribution of technological categories among flakes and across the studied assemblages. The figure is complemented by Pearson’s χ2-test of independence, demonstrating that the variation in the frequency of blank types between assemblages is statistically significant. Tools have been excluded from this quantification.
@@ -397,16 +406,16 @@ dataset.complete.reduced %>%
 <br>
 
 ### Figure S18
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=12, fig.height=12, fig.retina=2}
 dataset.complete.reduced %>%
   mutate(SU = recode(SU, D3b.alpha = "D3b alpha")) %>%
   rename(Technology = technology) %>%
   filter(class == "Blank") %>%
   filter(blank == "Blade") %>%
   ggbarstats(x = Technology, y = SU, label = "both") +
-  theme(text = element_text(size = 14),
-        axis.text = element_text(size = 14),
-        axis.title = element_text(size = 14)) +
+  theme(text = element_text(size = 18),
+        axis.text = element_text(size = 18),
+        axis.title = element_text(size = 18)) +
   scale_fill_manual(values=met.brewer("Navajo", 4))
 ```
   **Figure S18.** Stacked bar charts illustrating the distribution of technological categories among blades and across the studied assemblages. The figure is complemented by Pearson’s χ2-test of independence, demonstrating that the variation in the frequency of blank types between assemblages is statistically significant. Tools have been excluded from this quantification.
@@ -414,16 +423,16 @@ dataset.complete.reduced %>%
 <br>
 
 ### Figure S19
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=12, fig.height=12, fig.retina=2}
 dataset.complete.reduced %>%
   mutate(SU = recode(SU, D3b.alpha = "D3b alpha")) %>%
   rename(Technology = technology) %>%
   filter(class == "Blank") %>%
   filter(blank == "Bladelet") %>%
   ggbarstats(x = Technology, y = SU, label = "both") +
-  theme(text = element_text(size = 14),
-        axis.text = element_text(size = 14),
-        axis.title = element_text(size = 14)) +
+  theme(text = element_text(size = 18),
+        axis.text = element_text(size = 18),
+        axis.title = element_text(size = 18)) +
   scale_fill_manual(values=met.brewer("Navajo", 4))
 ```
   **Figure S19.** Stacked bar charts illustrating the distribution of technological categories among bladelets and across the studied assemblages. The figure is complemented by Pearson’s χ2-test of independence, demonstrating that the variation in the frequency of blank types between assemblages is statistically significant. Tools have been excluded from this quantification.
@@ -670,13 +679,19 @@ knitr::include_graphics("../output/figures/Figure_S29.png")
 
 ### Figure S30
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
-knitr::include_graphics("../output/figures/Figure_s30.png")
+knitr::include_graphics("../output/figures/Figure_S30.png")
 ```
-  **Figure S30.** Visualization depicting the contribution of variables to the first and second dimensions of the Multiple Correspondence Analysis.
+  **Figure S30.** Visualization depicting the contribution of variables to the first and second dimensions of the Multiple Correspondence Analysis. The category "yes" refers to the presence of profile twisting.
 
 <br>
 
 ### Figure S31
+```{r, echo=FALSE, fig.align='center', out.width="100%"}
+knitr::include_graphics("../output/figures/Figure_S31.png")
+```
+  **Figure S31.** Carinated endscraper from SU D3b alpha. A portion of the flaking surface is obscured due to an invasive flake scar. Additional bladelet scars are visible on the right lateral side of the flaking surface. The images are derived from the cores’ 3D mesh.
+
+### Figure S32
 ```{r, echo=FALSE, warning=FALSE}
 Fig.core.blank.comp.data1 <- dataset.blank %>%
   mutate(SU = recode(SU, D3b.alpha = "D3b alpha")) %>%
@@ -706,11 +721,17 @@ ggplot() +
   theme(strip.background = element_rect(colour = "black", fill = "white"), strip.text.x = element_text(face = "bold")) +
   labs(x = "Classification", y = "Length (mm)")
 ```
-  **Figure S31.** Boxplots with jittered points comparing the length of the flaking surfaces of carinated and platform cores with the distribution of the length values of all complete blades and bladelets, both retouched and unretouched, recovered in D3b alpha.
+  **Figure S32.** Boxplots with jittered points comparing the length of the flaking surfaces of carinated and platform cores with the distribution of the length values of all complete blades and bladelets, both retouched and unretouched, recovered in D3b alpha.
 
 <br>
 
-### Figure S32
+### Figure S33
+```{r, echo=FALSE, fig.align='center', out.width="100%"}
+knitr::include_graphics("../output/figures/Figure_S33.png")
+```
+  **Figure S33.** Carinated cores recovered from the A2 and A1 subsets. Artifacts **a**, **b**, and **d** are further classified as *Rabot*, while **c** is identified as a carinated endscraper. The flaking surface of carinated core **b** has been partially removed due to frost action. Artifact **d** is considered a core in the initial stages of reduction. Core **a** is from A1east, **b** from A2ext, and **c** and **d** from A2int. The images are derived from the cores’ 3D mesh. Each artifact is accompanied by its ID, as listed in the dataset published in this paper and the 3D dataset published by Falcucci and Peresani (2023).
+
+### Figure S34
 ```{r, echo=FALSE, warning=FALSE}
 dataset.blank %>%
   filter(blank =="Bladelet",
@@ -731,11 +752,11 @@ dataset.blank %>%
         legend.position = "none") +
   labs(y= "Width (mm)")
 ```
-  **Figure S32.** Boxplots with jittered points showing the distribution of width values of retouched bladelets across the studied assemblages. The figure includes results of the Kruskal-Wallis test and the pairwise comparisons.
+  **Figure S34.** Boxplots with jittered points showing the distribution of width values of retouched bladelets across the studied assemblages. The figure includes results of the Kruskal-Wallis test and the pairwise comparisons.
 
 <br>
 
-### Figure S33
+### Figure S35
 ```{r, echo=FALSE, warning=FALSE}
 dataset.blank %>%
   filter(blank =="Bladelet",
@@ -756,11 +777,11 @@ dataset.blank %>%
         legend.position = "none") +
   labs(y= "Thickness (mm)")
 ```
-  **Figure S33.** Boxplots with jittered points showing the distribution of thickness values of retouched bladelets across the studied assemblages. The figure includes results of the Kruskal-Wallis test and the pairwise comparisons.
+  **Figure S35.** Boxplots with jittered points showing the distribution of thickness values of retouched bladelets across the studied assemblages. The figure includes results of the Kruskal-Wallis test and the pairwise comparisons.
 
 <br>
 
-### Figure S34
+### Figure S36
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 dataset.blank %>%
   mutate(SU = recode(SU, D3b.alpha = "D3b alpha")) %>%
@@ -772,11 +793,11 @@ dataset.blank %>%
         axis.title = element_text(size = 14)) +
   scale_fill_manual(values=met.brewer("Lakota", 3))
 ```
-  **Figure S34.** Stacked bar charts illustrating the distribution of retouched bladelets across the studied assemblages sorted according to retouch position. The figure is complemented by the Pearson’s χ2-test of independence, demonstrating that the variation in the frequency of alternate, inverse, and direct retouching is statistically significant.
+  **Figure S36.** Stacked bar charts illustrating the distribution of retouched bladelets across the studied assemblages sorted according to retouch position. The figure is complemented by the Pearson’s χ2-test of independence, demonstrating that the variation in the frequency of alternate, inverse, and direct retouching is statistically significant.
 
 <br>
 
-### Figure S35
+### Figure S37
 ```{r, echo=FALSE, warning=FALSE}
 dataset.core %>%
   filter(classification.1 != "Flake" & classification.1 != "Tested" & classification.1 != "Shatter") %>%
@@ -795,11 +816,11 @@ dataset.core %>%
         legend.position = "none") +
   labs(x = "SU", y = "logSDI")
 ```
-  **Figure S35.** Boxplots with jittered points displaying the distribution of the logSDI values of platform cores across the studied assemblages. The figure incorporates the results of the Kruskal-Wallis test and pairwise comparisons.
+  **Figure S37.** Boxplots with jittered points displaying the distribution of the logSDI values of platform cores across the studied assemblages. The figure incorporates the results of the Kruskal-Wallis test and pairwise comparisons.
 
 <br>
 
-### Figure S36
+### Figure S38
 ```{r, echo=FALSE, warning=FALSE}
 dataset.core %>%
   filter(classification.1 != "Flake" & classification.1 != "Tested" & classification.1 != "Shatter") %>%
@@ -816,7 +837,7 @@ dataset.core %>%
         legend.position = "none") +
   labs(x = "SU", y = "logSDI")
 ```
-  **Figure S36.** Boxplots with jittered points  displaying the distribution of the logSDI values of carinated cores across the studied assemblages.
+  **Figure S38.** Boxplots with jittered points  displaying the distribution of the logSDI values of carinated cores across the studied assemblages.
 
 <br>
 
@@ -832,15 +853,17 @@ dataset.blank %>%
   rename("Scar pattern" = scar.pattern) %>%
     mutate(SU = fct_relevel(SU, "D3b alpha", "A1east", "A1ext", "A2ext", "A2int")) %>%
   mutate(`Scar pattern` = recode(`Scar pattern`, Crossed = "Other", `Unidirectional transverse` = "Other")) %>%
+  mutate(`Scar pattern` = fct_relevel(`Scar pattern`, "Unidirectional parallel", "Unidirectional convergent", "Bidirectional", "Other")) %>% 
   tabyl(SU, `Scar pattern`) %>%
   adorn_totals("col") %>%
   adorn_totals("row") %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
 **Table S1.** Scar patterns recorded on the complete blade assemblages. The *Other* category includes scar patterns found in low frequencies (e.g., crossed and unidirectional transverse). The result of a Pearson's Chi-squared test reveals no differences between assemblages (*p* = 0.41).
 
@@ -874,9 +897,10 @@ dataset.blank %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
 **Table S2.** Presence of profile twisting recorded on complete blades. The result of a Pearson's Chi-squared test reveals no differences between assemblages (*p* = 0.52).
 
@@ -903,15 +927,17 @@ dataset.blank %>%
   select(SU, curvature) %>%
   na.omit() %>%
   rename("Curvature" = curvature) %>%
+    mutate(`Curvature` = fct_relevel(`Curvature`, "Straight", "Curved slightly", "Curved")) %>% 
   tabyl(SU, Curvature) %>%
   adorn_totals("col") %>%
   adorn_totals("row") %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
 **Table S3.** Presence and intensity of profile curvature recorded on complete blades. The result of a Pearson's Chi-squared test reveals no differences between assemblages (*p* = 0.30).
 
@@ -942,11 +968,12 @@ dataset.blank %>%
   adorn_percentages("col") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
-**Table S4.** Cross-section shape recorded on blades. A Pearson's Chi-squared test reveals significant differences between assemblages (*p* = 0.24).
+**Table S4.** Cross-section shape recorded on blades. A Pearson's Chi-squared test reveals no significant differences between assemblages (*p* = 0.24).
 
 ```{r, include=FALSE, warning=FALSE}
 dataset.blank %>%
@@ -974,15 +1001,17 @@ dataset.blank %>%
   select(SU, blank.shape) %>%
   na.omit() %>%
   rename("Blank shape" = blank.shape) %>%
+  mutate(`Blank shape` = fct_relevel(`Blank shape`, "Sub-parallel", "Convergent", "Irregular")) %>% 
   tabyl(SU, `Blank shape`) %>%
   adorn_totals("col") %>%
   adorn_totals("row") %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
 **Table S5.** External morphology recorded on complete blades. A Pearson’s chi-squared test reveals no differences between assemblages (Chi-squared = 5.28, *p* = 0.96).
 
@@ -1020,9 +1049,10 @@ dataset.blank %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
 **Table S6.** Platform types recorded on blades. The category *Other* includes categories found in low frequencies (e.g., cortical, dihedral, and double). A Pearson’s chi-squared test reveals no significant differences between assemblages (Chi-squared = Chi=47.56, *p* = 0.19).
 
@@ -1053,15 +1083,17 @@ dataset.blank %>%
   rename("Scar pattern" = scar.pattern) %>%
     mutate(SU = fct_relevel(SU, "D3b alpha", "A1east", "A1ext", "A2ext", "A2int")) %>%
   mutate(`Scar pattern` = recode(`Scar pattern`, Crossed = "Other", `Unidirectional transverse` = "Other")) %>%
+  mutate(`Scar pattern` = fct_relevel(`Scar pattern`, "Unidirectional parallel", "Unidirectional convergent", "Bidirectional", "Other")) %>% 
   tabyl(SU, `Scar pattern`) %>%
   adorn_totals("col") %>%
   adorn_totals("row") %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S7.** Scar patterns recorded on the complete bladelet assemblages. The *Other* category includes scar patterns found in low frequencies (e.g., crossed and unidirectional transverse). The result of a Pearson's Chi-squared test reveals no differences between assemblages (*p* = 0.20).
 
@@ -1095,9 +1127,10 @@ dataset.blank %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S8.** Presence of profile twisting recorded on complete bladelets. The result of a Pearson's Chi-squared test reveals no differences between assemblages (*p* = 0.96).
 
@@ -1127,18 +1160,20 @@ dataset.blank %>%
     mutate(SU = recode(SU, D3b.alpha = "D3b alpha")) %>%
   mutate(curvature = recode(curvature, `Curved sligthly` = "Curved slightly")) %>%
   mutate(SU = fct_relevel(SU, "D3b alpha", "A1east", "A1ext", "A2ext", "A2int")) %>%
-  select(SU, curvature) %>%
+  dplyr::select(SU, curvature) %>%
   na.omit() %>%
   rename("Curvature" = curvature) %>%
+  mutate(`Curvature` = fct_relevel(`Curvature`, "Straight", "Curved slightly", "Curved")) %>% 
   tabyl(SU, Curvature) %>%
   adorn_totals("col") %>%
   adorn_totals("row") %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S9.** Presence and intensity of profile curvature recorded on complete bladelets. The result of a Pearson's Chi-squared test reveals no differences between assemblages (*p* = 0.13).
 
@@ -1176,9 +1211,10 @@ dataset.blank %>%
   adorn_percentages("col") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S10.** Cross-section shape recorded on bladelets. A Pearson's Chi-squared test reveals significant differences between assemblages (*p* < 0.01).
 
@@ -1209,15 +1245,17 @@ dataset.blank %>%
   select(SU, blank.shape) %>%
   na.omit() %>%
   rename("Blank shape" = blank.shape) %>%
+  mutate(`Blank shape` = fct_relevel(`Blank shape`, "Sub-parallel", "Convergent", "Irregular")) %>% 
   tabyl(SU, `Blank shape`) %>%
   adorn_totals("col") %>%
   adorn_totals("row") %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S11.** External morphology recorded on complete bladelets. A Pearson’s chi-squared test reveals no differences between assemblages (Chi-squared = 5.28, *p* = 0.18).
 
@@ -1248,15 +1286,17 @@ dataset.blank %>%
   select(SU, distal.end) %>%
   na.omit() %>%
   rename("Distal end shape" = distal.end) %>%
+    mutate(`Distal end shape` = fct_relevel(`Distal end shape`, "Convex", "Straight", "Pointed", "Irregular")) %>% 
   tabyl(SU, `Distal end shape`) %>%
   adorn_totals("col") %>%
   adorn_totals("row") %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
 **Table S12.** Distal end morphology (in dorsal view) recorded on bladelets. A Pearson’s chi-squared test reveals no differences between layers (Chi-squared = 5.28, *p* = 0.09).
 
@@ -1288,15 +1328,17 @@ dataset.blank %>%
   replace(is.na(.), "Undetermined") %>%
   mutate(SU = fct_relevel(SU, "D3b alpha", "A1east", "A1ext", "A2ext", "A2int")) %>%
   rename("Platform type" = platform.type) %>%
+  mutate(`Platform type` = fct_relevel(`Platform type`, "Plain", "Linear", "Punctiform", "Other", "Undetermined")) %>%  
   tabyl(SU, `Platform type`) %>%
   adorn_totals("col") %>%
   adorn_totals("row") %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S13.** Platform types recorded on bladelets. The category *Other* includes categories found in low frequencies (e.g., cortical, dihedral, and double). A Pearson’s chi-squared test reveals no significant differences between assemblages (Chi-squared = Chi=47.56, *p* = 0.08).
 
@@ -1334,9 +1376,10 @@ dataset.blank %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S14.** Presence and type of bulbs recorded on bladelets. A Pearson’s chi-squared test reveals significant differences between assemblages (Chi-squared = 15.14, *p* < 0.01).
 
@@ -1373,9 +1416,10 @@ dataset.blank %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S15.** Presence and type of lips recorded on bladelets. A Pearson’s chi-squared test reveals significant differences between assemblages (Chi-squared = 11.02, *p* < 0.01).
 
@@ -1409,9 +1453,10 @@ dataset.core %>%
   adorn_percentages("row") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lccccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S16.** Negatives visible on laminar cores discarded at the site. Initial cores are excluded from the table. Percentages are provided in brackets.
 
@@ -1431,9 +1476,10 @@ dataset.blank %>%
   adorn_percentages("col") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lcccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S17.** Distribution of blanks categorized by raw material type across the studied assemblages. Rounded percentages are provided in brackets.
 
@@ -1453,9 +1499,10 @@ dataset.blank %>%
   adorn_percentages("col") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lcccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S18.** Distribution of retouched bladelets categorized by raw material type across the studied assemblages. Rounded percentages are provided in brackets.
 
@@ -1475,9 +1522,10 @@ dataset.blank %>%
   adorn_percentages("col") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lcccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S19.** Distribution of tool types, excluding retouched bladelets, categorized by raw material type across the studied assemblages. Rounded percentages are provided in brackets.
 
@@ -1495,9 +1543,10 @@ dataset.core %>%
   adorn_percentages("col") %>%
   adorn_pct_formatting(digits = 0) %>%
   adorn_ns(position = "front") %>%
-  adorn_title(placement = "top") %>%
-  kbl(align = "lcccr") %>%
-  kable_classic_2(lightable_options = "striped", full_width = F)
+  flextable() %>%
+  theme_vanilla() %>%
+  set_table_properties(layout = "autofit") %>%
+  autofit()
 ```
   **Table S20.** Distribution of cores categorized by raw material type across the studied assemblages. Rounded percentages are provided in brackets.
 
@@ -1517,6 +1566,8 @@ Delpiano D. & Peresani M. (2017) Exploring Neanderthal skills and lithic economy
 Falcucci A., Conard N.J. & Peresani M. (2017) A critical assessment of the Protoaurignacian lithic technology at Fumane Cave and its implications for the definition of the earliest Aurignacian. PLoS One, 12: e0189241. doi:10.1371/journal.pone.0189241
 
 Falcucci A. & Peresani M. (2019) A pre-Heinrich Event 3 assemblage at Fumane Cave and its contribution for understanding the beginning of the Gravettian in Italy. Quartär, 66: 135-154. doi:10.7485/QU66_6
+
+Falcucci A. & Peresani M. (2023) The Open Aurignacian Project. Volume 1: Fumane Cave in northeastern Italy (v.2.1.1). Zenodo. doi:https://doi.org/10.5281/zenodo.6362149
 
 Falcucci A., Conard N.J. & Peresani M. (2020) Breaking through the Aquitaine frame: A re-evaluation on the significance of regional variants during the Aurignacian as seen from a key record in southern Europe. Journal of Anthropological Sciences, 98: 99-140. doi:https://doi.org/10.4436/JASS.98021
 

@@ -10,7 +10,7 @@ library(DescTools)
 # Selecting the lithic subsets and creating the dataset ####
 
 # A2int ####
-dataset_A2int <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A2int <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A2") %>%
   filter(square %in% c("95", "100", "105", "110","115", "120", "125")) %>%
   rename(SU = "unit")
@@ -19,7 +19,7 @@ dataset_A2int$SU <- c("A2int")
 
 
 # A2ext ####
-dataset_A2ext <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A2ext <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A2") %>%
   filter(square %in% c("55","56", "65", "66")) %>%
   rename(SU = "unit")
@@ -28,7 +28,7 @@ dataset_A2ext$SU <- c("A2ext")
 
 
 # A1ext ####
-dataset_A1ext <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A1ext <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A1") %>%
   filter(square %in% c("55","56", "65", "66")) %>%
   rename(SU = "unit")
@@ -36,7 +36,7 @@ dataset_A1ext <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
 dataset_A1ext$SU <- c("A1ext")
 
 # A1 east ####
-dataset_A1east <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_A1east <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   filter(unit == "A1") %>%
   filter(square %in% c("62","63", "72", "73")) %>%
   rename(SU = "unit")
@@ -45,7 +45,7 @@ dataset_A1east$SU <- c("A1east")
 
 
 # D3b alpha ####
-dataset_D3balpha <- read_excel("../data/RF_Dataset_Blanks.xlsx") %>%
+dataset_D3balpha <- read.csv("../data/RF_Dataset_Blank.csv") %>%
   rename(SU = "unit") %>%
   filter(SU == "D3b.alpha")
 
