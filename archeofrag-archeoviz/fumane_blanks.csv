@@ -1,0 +1,248 @@
+blank.id,complete_blank,conjoins_nr,raw_material,blank_type,blank_size,tool
+1,Yes,2,Maiolica,Blade,L,Yes
+2,No,2,Maiolica,Blade,M,Yes
+3,Yes,2,Maiolica,Semi-cortical blade,L,Yes
+4,Yes,2,Scaglia Variegata,Blade,M,Yes
+5,Yes,2,Scaglia Variegata,Blade,S,No
+6,Yes,2,Scaglia Variegata,Blade,M,No
+7,Yes,2,Scaglia Variegata,Blade,M,No
+8,Yes,2,Maiolica,Blade,S,Yes
+9,No,2,Maiolica,Blade,L,No
+10,No,2,Scaglia Rossa,Semi-cortical blade,L,No
+11,No,2,Scaglia Rossa,Semi-cortical blade,M,No
+12,Yes,2,Scaglia Rossa,Blade,S,No
+13,Yes,3,Maiolica,Semi-cortical blade,S,Yes
+14,Yes,2,Scaglia Rossa,Blade,S,No
+15,Yes,2,Oolitic,Blade,L,No
+16,Yes,2,Scaglia Rossa,Blade,L,No
+17,Yes,2,Maiolica,Blade,M,No
+18,Yes,2,Scaglia Variegata,Cortical blade,L,No
+19,Yes,2,Scaglia Variegata,Blade,S,No
+20,No,2,Maiolica,Semi-cortical blade,S,No
+21,Yes,2,Maiolica,Semi-cortical blade,M,No
+22,No,2,Maiolica,Semi-cortical blade,L,Yes
+23,No,2,Maiolica,Cortical blade,L,No
+24,Yes,2,Maiolica,Semi-cortical blade,M,No
+25,Yes,2,Maiolica,Semi-cortical blade,S,No
+26,Yes,2,Scaglia Rossa,Semi-cortical blade,M,No
+27,Yes,2,Maiolica,Cortical blade,S,No
+28,Yes,2,Scaglia Variegata,Blade,S,No
+29,Yes,2,Maiolica,Semi-cortical blade,S,No
+30,Yes,2,Maiolica,Semi-cortical blade,M,No
+31,No,2,Maiolica,Semi-cortical blade,S,No
+32,No,2,Scaglia Variegata,Semi-cortical blade,S,No
+33,No,2,Maiolica,Blade,M,No
+34,Yes,2,Scaglia Rossa,Blade,L,No
+35,No,2,Scaglia Rossa,Blade,S,No
+36,No,2,Scaglia Rossa,Blade,L,No
+37,No,2,Scaglia Variegata,Blade,S,No
+38,No,2,Maiolica,Blade,S,No
+39,No,2,Maiolica,Blade,S,No
+40,No,2,Maiolica,Blade,M,No
+41,No,2,Maiolica,Blade,M,No
+42,Yes,2,Eocenic,Semi-cortical blade,M,No
+43,No,2,Maiolica,Blade,M,No
+44,Yes,2,Maiolica,Blade,S,No
+45,No,2,Maiolica,Blade,S,No
+46,Yes,2,Maiolica,Blade,M,Yes
+47,Yes,2,Maiolica,Blade,S,No
+48,Yes,2,Maiolica,Blade,S,No
+49,Yes,2,Maiolica,Blade,M,No
+50,Yes,2,Maiolica,Semi-cortical blade,M,No
+51,Yes,2,Maiolica,Semi-cortical blade,M,No
+52,Yes,2,Maiolica,Semi-cortical blade,M,No
+53,Yes,2,Maiolica,Semi-cortical blade,M,No
+54,Yes,2,Scaglia Variegata,Semi-cortical blade,L,No
+55,No,2,Scaglia Variegata,Semi-cortical blade,S,No
+56,Yes,2,Maiolica,Semi-cortical blade,M,No
+57,Yes,2,Maiolica,Semi-cortical blade,M,Yes
+58,Yes,2,Maiolica,Semi-cortical blade,S,Yes
+59,No,2,Maiolica,Semi-cortical blade,S,No
+60,Yes,2,Other/Undetermined,Semi-cortical blade,M,No
+61,No,2,Maiolica,Semi-cortical blade,S,No
+62,Yes,2,Maiolica,Semi-cortical blade,M,No
+63,Yes,2,Scaglia Rossa,Semi-cortical blade,M,No
+64,Yes,2,Scaglia Variegata,Semi-cortical blade,M,No
+65,Yes,2,Scaglia Rossa,Semi-cortical blade,L,Yes
+66,Yes,2,Scaglia Variegata,Blade,S,No
+67,Yes,3,Scaglia Variegata,Semi-cortical blade,L,No
+68,Yes,2,Scaglia Rossa,Blade,M,Yes
+69,No,2,Maiolica,Semi-cortical blade,M,Yes
+70,No,2,Maiolica,Blade,M,No
+71,Yes,2,Scaglia Rossa,Blade,L,No
+72,Yes,2,Oolitic,Blade,M,No
+73,Yes,2,Oolitic,Blade,L,No
+74,No,2,Oolitic,Blade,L,No
+75,Yes,2,Oolitic,Semi-cortical blade,S,No
+76,Yes,2,Oolitic,Blade,S,No
+77,No,2,Oolitic,Semi-cortical blade,M,No
+78,Yes,2,Eocenic,Blade,M,No
+79,No,2,Eocenic,Semi-cortical blade,S,No
+80,Yes,2,Eocenic,Blade,M,No
+81,No,2,Maiolica,Blade,S,No
+82,No,2,Maiolica,Semi-cortical blade,S,No
+83,Yes,2,Maiolica,Semi-cortical blade,L,No
+84,Yes,2,Maiolica,Blade,S,No
+85,Yes,2,Maiolica,Blade,M,No
+86,No,2,Maiolica,Blade,S,No
+87,No,2,Other/Undetermined,Blade,S,Yes
+88,No,2,Maiolica,Blade,M,Yes
+89,No,3,Maiolica,Blade,M,No
+90,No,2,Scaglia Variegata,Blade,M,No
+91,Yes,2,Scaglia Variegata,Blade,M,Yes
+92,No,2,Scaglia Variegata,Semi-cortical blade,S,No
+93,Yes,2,Scaglia Rossa,Blade,M,No
+94,Yes,2,Scaglia Variegata,Blade,S,No
+95,No,2,Scaglia Variegata,Blade,M,No
+96,No,2,Maiolica,Semi-cortical blade,S,No
+97,Yes,3,Maiolica,Semi-cortical blade,M,Yes
+98,Yes,3,Maiolica,Semi-cortical blade,M,No
+99,Yes,2,Maiolica,Semi-cortical blade,M,No
+100,Yes,2,Maiolica,Semi-cortical blade,M,No
+101,Yes,2,Scaglia Variegata,Blade,S,No
+102,Yes,2,Scaglia Rossa,Semi-cortical blade,S,No
+103,Yes,2,Scaglia Rossa,Blade,S,No
+104,No,2,Scaglia Variegata,Blade,M,No
+105,No,2,Maiolica,Semi-cortical blade,L,Yes
+106,Yes,2,Maiolica,Cortical blade,M,Yes
+107,Yes,2,Scaglia Rossa,Blade,M,Yes
+108,Yes,2,Maiolica,Semi-cortical blade,L,Yes
+109,Yes,2,Scaglia Variegata,Blade,M,Yes
+110,Yes,2,Scaglia Variegata,Blade,M,Yes
+111,No,2,Scaglia Variegata,Blade,M,Yes
+112,Yes,2,Maiolica,Semi-cortical blade,M,No
+113,Yes,2,Scaglia Variegata,Semi-cortical blade,S,No
+114,Yes,2,Other/Undetermined,Semi-cortical blade,S,No
+115,No,2,Maiolica,Semi-cortical blade,S,No
+116,Yes,3,Maiolica,Semi-cortical blade,M,No
+117,No,2,Maiolica,Semi-cortical blade,S,No
+118,No,2,Maiolica,Semi-cortical blade,S,No
+119,Yes,2,Other/Undetermined,Blade,M,Yes
+120,Yes,2,Maiolica,Semi-cortical blade,L,Yes
+121,Yes,2,Maiolica,Blade,S,Yes
+122,No,2,Scaglia Rossa,Blade,M,No
+123,Yes,2,Scaglia Variegata,Blade,M,No
+124,Yes,2,Maiolica,Blade,M,No
+125,Yes,2,Scaglia Variegata,Blade,S,No
+126,Yes,2,Scaglia Variegata,Blade,M,No
+127,No,2,Maiolica,Semi-cortical blade,M,No
+128,No,2,Maiolica,Semi-cortical blade,M,No
+129,Yes,2,Scaglia Rossa,Blade,S,No
+130,Yes,2,Maiolica,Blade,S,No
+131,Yes,2,Maiolica,Blade,S,No
+132,Yes,2,Maiolica,Blade,M,No
+133,Yes,2,Maiolica,Cortical blade,M,No
+134,No,2,Maiolica,Cortical blade,S,No
+135,Yes,2,Maiolica,Blade,M,No
+136,Yes,2,Maiolica,Blade,S,No
+137,Yes,4,Maiolica,Semi-cortical blade,L,No
+138,No,2,Radiolarite,Blade,S,No
+139,No,2,Radiolarite,Blade,M,No
+140,Yes,2,Radiolarite,Blade,M,No
+141,No,2,Radiolarite,Blade,S,No
+142,Yes,2,Radiolarite,Blade,S,No
+143,No,2,Radiolarite,Blade,S,No
+144,No,2,Radiolarite,Blade,S,No
+145,Yes,2,Radiolarite,Blade,S,No
+146,No,2,Other/Undetermined,Blade,S,No
+147,Yes,2,Scaglia Variegata,Blade,M,No
+148,Yes,2,Scaglia Variegata,Blade,M,Yes
+149,Yes,2,Scaglia Variegata,Blade,M,Yes
+150,No,2,Scaglia Variegata,Blade,M,Yes
+151,No,2,Scaglia Rossa,Blade,M,No
+152,No,2,Scaglia Rossa,Blade,M,Yes
+153,No,3,Maiolica,Semi-cortical blade,M,No
+154,Yes,2,Maiolica,Blade,S,No
+155,No,2,Maiolica,Blade,S,No
+156,No,2,Maiolica,Semi-cortical blade,S,No
+157,Yes,2,Scaglia Variegata,Blade,M,No
+158,No,2,Maiolica,Blade,M,No
+159,Yes,2,Maiolica,Blade,L,No
+160,No,2,Maiolica,Blade,M,No
+161,Yes,2,Maiolica,Blade,M,No
+162,Yes,2,Scaglia Variegata,Blade,M,No
+163,Yes,2,Maiolica,Blade,S,No
+164,Yes,2,Maiolica,Blade,M,Yes
+165,No,2,Maiolica,Blade,S,Yes
+166,No,2,Maiolica,Blade,M,No
+167,No,2,Maiolica,Blade,L,Yes
+168,No,2,Maiolica,Blade,M,No
+169,No,2,Maiolica,Blade,M,No
+170,No,2,Maiolica,Blade,S,No
+171,No,2,Maiolica,Blade,M,No
+172,Yes,2,Maiolica,Blade,S,No
+173,No,2,Maiolica,Blade,M,No
+174,No,2,Maiolica,Blade,L,No
+175,Yes,2,Maiolica,Blade,M,No
+176,Yes,2,Maiolica,Blade,L,No
+177,No,2,Maiolica,Blade,M,No
+178,Yes,2,Maiolica,Blade,S,No
+179,Yes,2,Maiolica,Blade,S,No
+180,Yes,2,Maiolica,Blade,S,No
+181,No,2,Maiolica,Blade,S,No
+182,No,2,Maiolica,Blade,M,No
+183,Yes,2,Maiolica,Blade,S,No
+184,Yes,2,Maiolica,Blade,S,No
+185,No,2,Maiolica,Semi-cortical blade,S,No
+186,Yes,2,Scaglia Rossa,Blade,L,Yes
+187,Yes,2,Other/Undetermined,Blade,L,Yes
+188,Yes,2,Maiolica,Blade,L,Yes
+189,No,2,Maiolica,Blade,M,No
+190,No,2,Maiolica,Blade,M,Yes
+191,No,2,Maiolica,Blade,S,Yes
+192,No,2,Maiolica,Blade,M,Yes
+193,No,2,Other/Undetermined,Semi-cortical blade,M,Yes
+194,No,2,Maiolica,Blade,L,No
+195,Yes,2,Maiolica,Blade,L,Yes
+196,No,2,Other/Undetermined,Semi-cortical blade,S,Yes
+197,No,2,Maiolica,Blade,M,Yes
+198,Yes,3,Maiolica,Blade,M,No
+199,Yes,2,Maiolica,Semi-cortical blade,M,No
+200,No,2,Maiolica,Blade,S,Yes
+201,No,2,Maiolica,Blade,M,Yes
+202,Yes,2,Maiolica,Blade,M,Yes
+203,No,2,Maiolica,Blade,M,No
+204,Yes,2,Other/Undetermined,Blade,S,No
+205,No,2,Maiolica,Blade,M,No
+206,No,2,Maiolica,Blade,S,No
+207,Yes,2,Maiolica,Blade,S,No
+208,Yes,2,Maiolica,Blade,S,No
+209,No,2,Maiolica,Blade,L,No
+210,No,2,Maiolica,Blade,L,Yes
+211,Yes,2,Maiolica,Blade,M,Yes
+212,Yes,2,Maiolica,Blade,S,No
+213,Yes,2,Maiolica,Blade,L,No
+214,Yes,2,Maiolica,Blade,L,No
+215,No,2,Maiolica,Blade,S,No
+216,Yes,2,Maiolica,Blade,S,No
+217,Yes,2,Maiolica,Blade,S,No
+218,Yes,2,Maiolica,Blade,M,Yes
+219,No,2,Maiolica,Blade,S,No
+220,Yes,2,Maiolica,Blade,L,No
+221,No,2,Maiolica,Blade,S,No
+222,No,2,Maiolica,Blade,M,No
+223,No,2,Scaglia Variegata,Semi-cortical blade,L,No
+224,Yes,2,Maiolica,Blade,S,No
+225,No,2,Scaglia Variegata,Semi-cortical blade,S,No
+226,Yes,2,Scaglia Variegata,Blade,S,No
+227,No,2,Scaglia Variegata,Blade,M,No
+228,No,2,Scaglia Variegata,Semi-cortical blade,M,Yes
+229,No,2,Maiolica,Semi-cortical blade,M,No
+230,No,2,Maiolica,Blade,M,No
+231,Yes,3,Scaglia Variegata,Blade,M,Yes
+232,No,2,Eocenic,Blade,S,Yes
+233,Yes,2,Maiolica,Semi-cortical blade,L,No
+234,No,2,Maiolica,Semi-cortical blade,L,No
+235,Yes,3,Scaglia Variegata,Blade,S,Yes
+236,Yes,2,Maiolica,Blade,S,Yes
+237,Yes,3,Scaglia Variegata,Blade,S,Yes
+238,Yes,2,Scaglia Variegata,Blade,S,Yes
+239,Yes,2,Scaglia Variegata,Blade,S,Yes
+240,Yes,2,Maiolica,Blade,S,Yes
+241,Yes,2,Scaglia Variegata,Blade,S,Yes
+242,Yes,2,Maiolica,Blade,S,Yes
+243,Yes,2,Scaglia Variegata,Blade,S,Yes
+244,Yes,2,Scaglia Variegata,Blade,M,No
+245,No,2,Maiolica,Blade,M,No
+246,No,4,Maiolica,Cortical blade,S,No
+247,Yes,2,Other/Undetermined,Blade,M,No
